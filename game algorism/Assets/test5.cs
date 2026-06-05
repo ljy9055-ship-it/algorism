@@ -1,30 +1,30 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class test5 : MonoBehaviour
 {
-    Vector3 vec = new Vector3(10, 0, 10);
-    Rigidbody rb;
-    public float pushForce = 10f;
-    ForceMode forc = new ForceMode();
-    
-    void Nockback()
-    {
+    Vector3 vec = new Vector3(10, 0, 10).normalized;
 
-        
-    }
+    public float pushForce = 10f;
+    public ForceMode forc = ForceMode.Impulse;
+
     void Start()
     {
-        
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rb.AddComponent<Rigidbody>();
-        rb.AddForce(10f, 0, 10f);
-        
+        Vector3 forcepower = new Vector3(1, 1, 1).normalized;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        rb.AddForce(Vector3.up * 100f, ForceMode.Impulse);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        rb.AddForce(vec, forc);
+
+    }
+
+    void Knockback()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        rb.AddForce(vec * pushForce, forc);
     }
 }
