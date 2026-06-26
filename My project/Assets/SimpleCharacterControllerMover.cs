@@ -42,8 +42,12 @@ public class SimpleCharacterControllerMover : MonoBehaviour
     private void Update()
     {
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
-        move *= moveSpeed;
+
+        Vector3 move =
+            transform.right * moveInput.x +
+            transform.forward * moveInput.y;
+
+        move = move.normalized * moveSpeed;
 
         if (controller.isGrounded && verticalVelocity < 0f)
         {
