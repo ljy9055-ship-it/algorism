@@ -38,6 +38,7 @@ public class MonsterDropper : MonoBehaviour
                 }
 
                 Debug.Log(drop.item.itemName + " " + drop.amount + "°³ È¹µæ");
+                
             }
             else
             {
