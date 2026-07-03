@@ -58,6 +58,9 @@ public class PlayerInteract : MonoBehaviour
             {
                 Debug.Log("상호작용 성공");
                 interactable.Interact();
+                Animator animator = new Animator();
+                animator = GetComponentInChildren<Animator>();
+                animator.SetTrigger("Interact");
                 return;
             }
         }

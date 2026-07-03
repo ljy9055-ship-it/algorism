@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-    public Status playerstatus;
-    public State playerstate;
+    public Status playerstatus = new Status();
+    public State playerstate = new State();
     
     
     void Start()
     {
-        playerstate = GetComponent<State>();
-        playerstatus.Hp = GetComponent<int>();
-        playerstatus.Mp = GetComponent<int>();
         playerstate = State.Idle;
-        playerstatus.Hp = 0;
-        playerstatus.Mp = 0;
+     
+        
 
     }
 
