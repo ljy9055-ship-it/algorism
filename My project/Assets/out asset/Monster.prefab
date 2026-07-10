@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7895695584802174342}
   - component: {fileID: -5157322076985686362}
   - component: {fileID: -6681408859790895743}
-  - component: {fileID: 2494988118793209105}
+  - component: {fileID: 6137898911770241796}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12d69b073d27fc42b191e60128bddb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2494988118793209105
+--- !u!114 &6137898911770241796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,13 +190,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6173980936911221512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f418941500d317947aea97df723c8fb4, type: 3}
+  m_Script: {fileID: 11500000, guid: d8747b69b05919e439a22df192dc041f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerstatus:
-    Hp: 100
-    Mp: 100
-  playerstate: 0
+  monsterstatus:
+    Hp: 150
+    Mp: 150
+  monsterstate: 0
 --- !u!1001 &7572922664750125788
 PrefabInstance:
   m_ObjectHideFlags: 0

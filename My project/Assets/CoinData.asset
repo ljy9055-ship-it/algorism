@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: CoinData
   m_EditorClassIdentifier: 
   itemName: "\uCF54\uC778"
+  increasespeed: 1
+  speedbonus: 1

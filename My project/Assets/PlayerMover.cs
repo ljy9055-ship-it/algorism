@@ -15,6 +15,7 @@ public class PlayerMover : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -41,5 +42,9 @@ public class PlayerMover : MonoBehaviour
         controller.Move(
             move * moveSpeed * Time.deltaTime
         );
+    }
+    public void IncreaseSpeed(float amount)
+    {
+        moveSpeed += amount;
     }
 }

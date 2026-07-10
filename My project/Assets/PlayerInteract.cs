@@ -61,6 +61,7 @@ public class PlayerInteract : MonoBehaviour
                 Animator animator = new Animator();
                 animator = GetComponentInChildren<Animator>();
                 animator.SetTrigger("Interact");
+
                 return;
             }
         }
