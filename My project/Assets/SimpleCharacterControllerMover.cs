@@ -59,4 +59,9 @@ public class SimpleCharacterControllerMover : MonoBehaviour
 
         controller.Move(move * Time.deltaTime);
     }
+    public void IncreaseSpeed(float amount)
+    {
+        moveSpeed += amount;
+        Debug.Log("현재 스피드 : " + moveSpeed);
+    }
 }

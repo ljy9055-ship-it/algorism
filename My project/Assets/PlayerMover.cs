@@ -7,14 +7,14 @@ public class PlayerMover : MonoBehaviour
     public float moveSpeed = 5f;
     public float mouseSensitivity = 0.1f;
 
-    private CharacterController controller;
+    private SimpleCharacterControllerMover controller;
 
     private Vector2 moveInput;
     private Vector2 lookInput;
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        controller = GetComponent<SimpleCharacterControllerMover>();
         
     }
 
@@ -39,12 +39,7 @@ public class PlayerMover : MonoBehaviour
             transform.forward * moveInput.y +
             transform.right * moveInput.x;
 
-        controller.Move(
-            move * moveSpeed * Time.deltaTime
-        );
+        
     }
-    public void IncreaseSpeed(float amount)
-    {
-        moveSpeed += amount;
-    }
+    
 }

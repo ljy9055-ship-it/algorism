@@ -16,8 +16,7 @@ public class ItemPickup : MonoBehaviour
 
         if (inventory != null)
         {
-            playerMover.IncreaseSpeed(speedbonus);
-            Debug.Log("이동속도 증가!");
+            
             inventory.AddItem(itemName);
             Destroy(gameObject);
         }

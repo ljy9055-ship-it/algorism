@@ -26,6 +26,10 @@ public class MonsterStatus : MonoBehaviour
             monsterstate = State.Dead;
         }
     }
+    public void TakeDamage(int damage)
+    {
+        monsterstatus.Hp -= damage;
+    }
     // Update is called once per frame
     void Update()
     {

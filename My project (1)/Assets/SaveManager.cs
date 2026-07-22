@@ -1,0 +1,260 @@
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+
+public class SaveManager : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private StoryManager storyManager;
+    [SerializeField] private StoryDatabase storyDatabase;
+    [SerializeField] private BattleManager battleManager;
+    [SerializeField] private GameSettings gameSettings;
+    
+    private string SavePath
+    {
+        get
+        {
+            return Path.Combine(
+                Application.persistentDataPath,
+                "save.json"
+            );
+        }
+    }
+    private void ReplaceList(
+    List<string> target,
+    List<string> savedList
+)
+    {
+        target.Clear();
+
+        if (savedList != null)
+        {
+            target.AddRange(savedList);
+        }
+    }
+    public void SaveGame()
+    {
+        if (PlayerData.Instance == null)
+        {
+            Debug.LogError("PlayerData가 없습니다.");
+            return;
+        }
+
+        if (storyManager == null || storyManager.currentNode == null)
+        {
+            Debug.LogError("현재 StoryNode가 없습니다.");
+            return;
+        }
+
+        PlayerData player = PlayerData.Instance;
+
+        SaveData saveData = new SaveData
+        {
+            saveVersion = 1,
+
+            currentNodeId = storyManager.currentNode.nodeId,
+
+            playerName = player.playerName,
+            level = player.level,
+            experience = player.experience,
+
+            hp = player.hp,
+            maxHp = player.maxHp,
+            attack = player.attack,
+            defense = player.defense,
+            gold = player.gold,
+
+            inventory =
+                new List<string>(player.inventory),
+
+            equippedWeaponId =
+                player.equippedWeaponId,
+
+            equippedArmorId =
+                player.equippedArmorId,
+
+            completedEventIds =
+                new List<string>(player.completedEventIds),
+
+            openedChestIds =
+                new List<string>(player.openedChestIds),
+
+            defeatedEnemyIds =
+                new List<string>(player.defeatedEnemyIds),
+
+            completedQuestIds =
+                new List<string>(player.completedQuestIds),
+
+            battle = CreateBattleSaveData(),
+
+            settings = CreateSettingsSaveData()
+        };
+
+        string json = JsonUtility.ToJson(saveData, true);
+
+        try
+        {
+            File.WriteAllText(SavePath, json);
+            Debug.Log($"저장 완료: {SavePath}");
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogError($"저장 실패: {exception.Message}");
+        }
+    }
+
+    public void LoadGame()
+    {
+        if (!File.Exists(SavePath))
+        {
+            Debug.LogWarning("저장 파일이 없습니다.");
+            return;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(SavePath);
+            SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+            if (saveData == null)
+            {
+                Debug.LogError("저장 데이터를 읽지 못했습니다.");
+                return;
+            }
+
+            StoryNode savedNode =
+                storyDatabase.GetNode(saveData.currentNodeId);
+
+            if (savedNode == null)
+            {
+                return;
+            }
+
+            RestorePlayerData(saveData);
+            storyManager.LoadStoryNode(savedNode);
+
+            Debug.Log("불러오기 완료");
+            RestorePlayerData(saveData);
+            RestoreSettings(saveData.settings);
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogError($"불러오기 실패: {exception.Message}");
+        }
+    }
+    private void RestoreSettings(
+    SettingsSaveData savedSettings
+)
+    {
+        if (gameSettings == null || savedSettings == null)
+            return;
+
+        gameSettings.masterVolume =
+            savedSettings.masterVolume;
+
+        gameSettings.bgmVolume =
+            savedSettings.bgmVolume;
+
+        gameSettings.effectVolume =
+            savedSettings.effectVolume;
+
+        gameSettings.fullscreen =
+            savedSettings.fullscreen;
+
+        gameSettings.textSpeed =
+            savedSettings.textSpeed;
+
+        gameSettings.ApplySettings();
+    }
+
+    private void RestorePlayerData(SaveData saveData)
+    {
+        PlayerData player = PlayerData.Instance;
+
+        player.maxHp = saveData.maxHp;
+        player.hp = Mathf.Clamp(
+            saveData.hp,
+            0,
+            player.maxHp
+        );
+
+        player.attack = saveData.attack;
+        player.defense = saveData.defense;
+        player.gold = Mathf.Max(0, saveData.gold);
+
+        player.inventory.Clear();
+
+        if (saveData.inventory != null)
+        {
+            player.inventory.AddRange(saveData.inventory);
+        }
+    }
+
+    public void DeleteSave()
+    {
+        if (!File.Exists(SavePath))
+        {
+            Debug.Log("삭제할 저장 파일이 없습니다.");
+            return;
+        }
+
+        File.Delete(SavePath);
+        Debug.Log("저장 파일을 삭제했습니다.");
+    }
+
+    public bool HasSaveFile()
+    {
+        return File.Exists(SavePath);
+    }
+    private BattleSaveData CreateBattleSaveData()
+    {
+        if (battleManager == null || !battleManager.IsInBattle)
+        {
+            return new BattleSaveData
+            {
+                isInBattle = false
+            };
+        }
+
+        return new BattleSaveData
+        {
+            isInBattle = true,
+
+            enemyId = battleManager.CurrentEnemyId,
+            enemyCurrentHp = battleManager.CurrentEnemyHp,
+
+            victoryNodeId =
+                storyManager.currentNode.victoryNode != null
+                    ? storyManager.currentNode.victoryNode.nodeId
+                    : string.Empty,
+
+            defeatNodeId =
+                storyManager.currentNode.defeatNode != null
+                    ? storyManager.currentNode.defeatNode.nodeId
+                    : string.Empty,
+
+            escapeNodeId =
+                storyManager.currentNode.escapeNode != null
+                    ? storyManager.currentNode.escapeNode.nodeId
+                    : string.Empty
+        };
+    }
+    private SettingsSaveData CreateSettingsSaveData()
+    {
+        if (gameSettings == null)
+        {
+            return new SettingsSaveData();
+        }
+
+        return new SettingsSaveData
+        {
+            masterVolume = gameSettings.masterVolume,
+            bgmVolume = gameSettings.bgmVolume,
+            effectVolume = gameSettings.effectVolume,
+            fullscreen = gameSettings.fullscreen,
+            textSpeed = gameSettings.textSpeed
+        };
+    }
+
+}

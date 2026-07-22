@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -5157322076985686362}
   - component: {fileID: -6681408859790895743}
   - component: {fileID: 6137898911770241796}
+  - component: {fileID: -2289577982018726420}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -197,6 +198,21 @@ MonoBehaviour:
     Hp: 150
     Mp: 150
   monsterstate: 0
+--- !u!114 &-2289577982018726420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173980936911221512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fb43100ec508744a823aa95d5bf83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\uCF54\uC778"
+  increasespeed: 1
+  speedbonus: 1
 --- !u!1001 &7572922664750125788
 PrefabInstance:
   m_ObjectHideFlags: 0
