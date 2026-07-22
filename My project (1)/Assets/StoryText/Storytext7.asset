@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
+  m_Name: Storytext7
+  m_EditorClassIdentifier: 
+  nodeId: 0007
+  storyText: "\uB208\uC55E\uC5D0 \uD3BC\uCCD0\uC9C4 \uAC83\uC740 \uD3D0\uD5C8\uC600\uB2E4.
+    \uAC74\uBB3C\uB4E4\uC740 \uBB34\uB108\uC9C4 \uC794\uD574\uB4E4\uB85C \uD749\uD55C
+    \uBAB0\uAF34\uC774\uC5C8\uACE0 \uC0AC\uB78C\uC758 \uC778\uAE30\uCC99\uC740 \uCC3E\uC544\uBCFC
+    \uC218 \uC5C6\uC5C8\uB2E4."
+  backgroundImage: {fileID: 0}
+  hpChange: 0
+  goldChange: 0
+  itemToGive: 
+  enemy: {fileID: 0}
+  victoryNode: {fileID: 0}
+  defeatNode: {fileID: 0}
+  escapeNode: {fileID: 0}
+  choices:
+  - buttonText: 
+    nextNode: {fileID: 11400000, guid: ba51ed04ec36e4e40880775f1427004b, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+  eventId: 0007
+  runOnlyOnce: 0

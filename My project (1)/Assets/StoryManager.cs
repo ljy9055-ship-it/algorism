@@ -16,11 +16,15 @@ public class StoryManager : MonoBehaviour
 
     [Header("Battle")]
     public BattleManager battleManager;
+    [SerializeField] private PlayerData playerData;
+    [Header("스토리 배경")]
+    [SerializeField] private Image storyBackgroundImage;
 
     private void Start()
     {
         ShowNode();
     }
+
 
     private void ShowNode()
     {
@@ -44,6 +48,23 @@ public class StoryManager : MonoBehaviour
 
         UpdateChoiceButtons();
     }
+    private void UpdateStoryBackground(Sprite backgroundSprite)
+    {
+        if (storyBackgroundImage == null)
+        {
+            Debug.LogWarning("스토리 배경 Image가 연결되지 않았습니다.");
+            return;
+        }
+
+        if (backgroundSprite == null)
+        {
+            storyBackgroundImage.enabled = false;
+            return;
+        }
+
+        storyBackgroundImage.sprite = backgroundSprite;
+        storyBackgroundImage.enabled = true;
+    }
     private void StartBattle()
     {
         storyPanel.SetActive(false);
@@ -56,60 +77,83 @@ public class StoryManager : MonoBehaviour
 
     private void ApplyNodeEffects()
     {
-        PlayerData player = PlayerData.Instance;
+        if (currentNode == null)
+            return;
 
-        if (currentNode.runOnlyOnce &&
-            !string.IsNullOrWhiteSpace(currentNode.eventId))
+        bool alreadyCompleted =
+            !string.IsNullOrEmpty(currentNode.eventId) &&
+            playerData.IsEventCompleted(currentNode.eventId);
+
+        if (currentNode.runOnlyOnce && alreadyCompleted)
         {
-            if (player.IsEventCompleted(currentNode.eventId))
-            {
-                return;
-            }
+            return;
         }
 
-        player.ChangeHp(currentNode.hpChange);
-        player.ChangeGold(currentNode.goldChange);
+        playerData.ChangeHp(currentNode.hpChange);
+        playerData.ChangeGold(currentNode.goldChange);
 
-        if (!string.IsNullOrWhiteSpace(currentNode.itemToGive))
+        if (!string.IsNullOrEmpty(currentNode.itemToGive))
         {
-            player.AddItem(currentNode.itemToGive);
+            playerData.AddItem(currentNode.itemToGive);
         }
 
-        if (currentNode.runOnlyOnce &&
-            !string.IsNullOrWhiteSpace(currentNode.eventId))
+        if (!string.IsNullOrEmpty(currentNode.eventId))
         {
-            player.CompleteEvent(currentNode.eventId);
+            playerData.CompleteEvent(currentNode.eventId);
         }
     }
 
+
     private void UpdateChoiceButtons()
     {
+        if (currentNode == null)
+        {
+            Debug.LogError("현재 StoryNode가 없습니다.");
+            return;
+        }
+
         for (int i = 0; i < choiceButtons.Length; i++)
         {
-            if (i >= currentNode.choices.Length)
+            Button button = choiceButtons[i];
+
+            if (button == null)
+                continue;
+
+            button.onClick.RemoveAllListeners();
+
+            if (currentNode.choices == null ||
+                i >= currentNode.choices.Length)
             {
-                choiceButtons[i].gameObject.SetActive(false);
+                button.gameObject.SetActive(false);
                 continue;
             }
 
             Choice choice = currentNode.choices[i];
 
-            choiceButtons[i].gameObject.SetActive(true);
+            // 필요한 이벤트를 보지 않았다면 버튼 숨기기
+            if (!CanShowChoice(choice))
+            {
+                button.gameObject.SetActive(false);
+                continue;
+            }
+
+            button.gameObject.SetActive(true);
+            button.interactable = CanSelectChoice(choice);
 
             TMP_Text buttonText =
-                choiceButtons[i].GetComponentInChildren<TMP_Text>();
+                button.GetComponentInChildren<TMP_Text>();
 
-            buttonText.text = choice.buttonText;
+            if (buttonText != null)
+            {
+                buttonText.text = choice.buttonText;
+            }
 
-            bool canSelect = CanSelectChoice(choice);
-            choiceButtons[i].interactable = canSelect;
+            int capturedIndex = i;
 
-            int index = i;
-
-            choiceButtons[i].onClick.RemoveAllListeners();
-            choiceButtons[i].onClick.AddListener(
-                () => SelectChoice(index)
-            );
+            button.onClick.AddListener(() =>
+            {
+                SelectChoice(capturedIndex);
+            });
         }
     }
 
@@ -131,14 +175,29 @@ public class StoryManager : MonoBehaviour
 
     private void SelectChoice(int index)
     {
+        if (currentNode == null ||
+            currentNode.choices == null ||
+            index < 0 ||
+            index >= currentNode.choices.Length)
+        {
+            Debug.LogError("잘못된 선택지 인덱스입니다.");
+            return;
+        }
+
         Choice selectedChoice = currentNode.choices[index];
+
+        if (selectedChoice == null)
+        {
+            Debug.LogError("선택지 데이터가 없습니다.");
+            return;
+        }
 
         if (!CanSelectChoice(selectedChoice))
             return;
 
         ApplyChoiceEffects(selectedChoice);
 
-        currentNode = selectedChoice.nextNode;
+        currentNode = GetNextNode(selectedChoice);
 
         if (currentNode != null)
         {
@@ -150,7 +209,10 @@ public class StoryManager : MonoBehaviour
 
             foreach (Button button in choiceButtons)
             {
-                button.gameObject.SetActive(false);
+                if (button != null)
+                {
+                    button.gameObject.SetActive(false);
+                }
             }
 
             UpdateStatusUI();
@@ -247,5 +309,82 @@ public class StoryManager : MonoBehaviour
 
         storyText.text = currentNode.storyText;
         UpdateChoiceButtons();
+    }
+    private bool CanShowChoice(Choice choice)
+    {
+        if (choice == null)
+            return false;
+
+        // 필요한 이벤트가 지정되지 않았다면 표시
+        if (string.IsNullOrEmpty(choice.requiredEventId))
+            return true;
+
+        // 해당 이벤트를 완료했을 때만 표시
+        return playerData.IsEventCompleted(choice.requiredEventId);
+    }
+    private StoryNode GetNextNode(Choice choice)
+    {
+        if (choice == null)
+            return null;
+
+        // 랜덤 이동을 사용하지 않는 경우
+        if (!choice.useRandomNextNode)
+        {
+            return choice.nextNode;
+        }
+
+        // 랜덤 노드 배열이 비어 있는 경우 기본 노드 사용
+        if (choice.randomNextNodes == null ||
+            choice.randomNextNodes.Length == 0)
+        {
+            Debug.LogWarning(
+                $"'{choice.buttonText}' 선택지의 랜덤 노드가 비어 있습니다. " +
+                "기본 Next Node로 이동합니다."
+            );
+
+            return choice.nextNode;
+        }
+
+        // 배열에 들어 있는 null 노드를 제외하고 선택
+        int validNodeCount = 0;
+
+        foreach (StoryNode node in choice.randomNextNodes)
+        {
+            if (node != null)
+            {
+                validNodeCount++;
+            }
+        }
+
+        if (validNodeCount == 0)
+        {
+            Debug.LogWarning(
+                $"'{choice.buttonText}' 선택지의 랜덤 노드가 모두 비어 있습니다."
+            );
+
+            return choice.nextNode;
+        }
+
+        StoryNode[] validNodes = new StoryNode[validNodeCount];
+        int validIndex = 0;
+
+        foreach (StoryNode node in choice.randomNextNodes)
+        {
+            if (node == null)
+                continue;
+
+            validNodes[validIndex] = node;
+            validIndex++;
+        }
+
+        int randomIndex = Random.Range(0, validNodes.Length);
+
+        StoryNode selectedNode = validNodes[randomIndex];
+
+        Debug.Log(
+            $"랜덤 스토리 선택: {selectedNode.nodeId}"
+        );
+
+        return selectedNode;
     }
 }

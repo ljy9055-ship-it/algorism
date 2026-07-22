@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
+  m_Name: StoryText28
+  m_EditorClassIdentifier: 
+  nodeId: 0028
+  storyText: "???:\uC81C\uAC00 \uC548\uB0B4\uD574 \uB4DC\uB9B4\uAC8C\uC694. \uC808
+    \uB530\uB77C\uC624\uC138\uC694."
+  backgroundImage: {fileID: 0}
+  hpChange: 0
+  goldChange: 0
+  itemToGive: 
+  enemy: {fileID: 0}
+  victoryNode: {fileID: 0}
+  defeatNode: {fileID: 0}
+  escapeNode: {fileID: 0}
+  choices:
+  - buttonText: 
+    nextNode: {fileID: 11400000, guid: 7dd9022d7d99e344989e00f93eb5d104, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+  eventId: 
+  runOnlyOnce: 0

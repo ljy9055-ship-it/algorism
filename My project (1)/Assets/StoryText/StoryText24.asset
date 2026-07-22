@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
+  m_Name: StoryText24
+  m_EditorClassIdentifier: 
+  nodeId: 0024
+  storyText: "???:\uC774 \uB9D0\uC744 \uB4E4\uC73C\uBA74 \uC0DD\uAC01\uC774 \uB2EC\uB77C\uC9C8\uAC78\uC694?
+    \uC774 \uB9C8\uC744\uC5D0\uB294 \uBB34\uB824 \uACE0\uB300 \uBB38\uBA85\uC758
+    \uAE30\uACC4\uC7A5\uCE58\uAC00 \uC874\uC7AC\uD55C\uB2E4\uAD6C\uC694. \uC774\uB7F0
+    \uC704\uD5D8\uD55C \uC232\uC18D\uC5D0 \uC790\uB9AC\uB97C \uC7A1\uC744 \uC218
+    \uC788\uB358 \uAC83\uB3C4 \uB2E4 \uADF8 \uB54C\uBB38\uC774\uACE0\uC694."
+  backgroundImage: {fileID: 0}
+  hpChange: 0
+  goldChange: 0
+  itemToGive: 
+  enemy: {fileID: 0}
+  victoryNode: {fileID: 0}
+  defeatNode: {fileID: 0}
+  escapeNode: {fileID: 0}
+  choices:
+  - buttonText: 
+    nextNode: {fileID: 11400000, guid: 4c7081c911779f540bba18f412f20e88, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+  eventId: 
+  runOnlyOnce: 0

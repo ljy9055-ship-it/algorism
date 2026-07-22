@@ -41,8 +41,33 @@ public class PlayerData : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    
 
+    public void AddExperience(int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        experience += amount;
+
+        CheckLevelUp();
+    }
+    private void CheckLevelUp()
+    {
+        int requiredExperience = level * 100;
+
+        while (experience >= requiredExperience)
+        {
+            experience -= requiredExperience;
+            level++;
+
+            maxHp += 10;
+            hp = maxHp;
+            attack += 2;
+            defense += 1;
+
+            requiredExperience = level * 100;
+        }
+    }
     public void AddItem(string itemId)
     {
         if (string.IsNullOrWhiteSpace(itemId))

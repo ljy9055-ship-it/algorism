@@ -13,6 +13,9 @@ public class StoryNode : ScriptableObject
     [TextArea(5, 10)]
     public string storyText;
 
+    [Header("Background")]
+    public Sprite backgroundImage;
+
     [Header("Node Effects")]
     public int hpChange;
     public int goldChange;
@@ -26,6 +29,7 @@ public class StoryNode : ScriptableObject
 
     [Header("Choices")]
     public Choice[] choices;
+
     [Header("One Time Event")]
     public string eventId;
     public bool runOnlyOnce;
@@ -35,13 +39,20 @@ public class StoryNode : ScriptableObject
 public class Choice
 {
     public string buttonText;
+
+    [Header("다음 스토리")]
     public StoryNode nextNode;
 
-    [Header("Requirements")]
+    public bool useRandomNextNode;
+    public StoryNode[] randomNextNodes;
+
+    [Header("선택 조건")]
     public string requiredItem;
     public int requiredGold;
 
-    [Header("Effects")]
+    public string requiredEventId;
+
+    [Header("선택 결과")]
     public int hpChange;
     public int goldChange;
     public string itemToGive;

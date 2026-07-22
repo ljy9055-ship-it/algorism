@@ -15,7 +15,8 @@ public class EnemyData : ScriptableObject
     public int maxHp = 30;
     public int attack = 5;
 
-    [Header("Rewards")]
-    public int goldReward = 10;
+    [Header("½Â¸® º¸»ó")]
+    public int experienceReward;
+    public int goldReward;
     public string itemReward;
 }

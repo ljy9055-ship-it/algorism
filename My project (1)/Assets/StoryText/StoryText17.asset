@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: StoryText1
+  m_Name: StoryText17
   m_EditorClassIdentifier: 
-  nodeId: 0001
-  storyText: "\uC5B4\uB450\uC6B4 \uC232 \uC18D. \uB098\uB294 \uAC77\uACE0 \uC788\uC5C8\uB2E4."
+  nodeId: 0017
+  storyText: "\uC0AC\uB78C\uB4E4\uC740 \uAD34\uBB3C\uC5D0\uAC8C \uD070 \uC0C1\uCC98\uB97C
+    \uC785\uD614\uC9C0\uB9CC \uB9C8\uC744\uC740 \uAD34\uBA78\uD588\uB2E4. \uC5EC\uC790\uB294
+    \uB3C4\uB9DD\uCE58\uB2E4 \uC2F8\uC6C0\uC5D0 \uD718\uB9D0\uB824 \uAC74\uBB3C\uC5D0
+    \uAE54\uB9B0 \uBAA8\uC591\uC774\uB2E4."
+  backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
   itemToGive: 
@@ -22,18 +26,13 @@ MonoBehaviour:
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices:
-  - buttonText: "\uB098\uC544\uAC04\uB2E4"
-    nextNode: {fileID: 11400000, guid: afc403c1d0202b7409949d59f1cb63ea, type: 2}
+  - buttonText: 
+    nextNode: {fileID: 11400000, guid: 68293ea32ccab494994228d5438d8b72, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
     requiredItem: 
     requiredGold: 0
-    hpChange: 0
-    goldChange: 0
-    itemToGive: 
-    itemToRemove: 
-  - buttonText: "\uB098\uC544\uAC04\uB2E4"
-    nextNode: {fileID: 11400000, guid: afc403c1d0202b7409949d59f1cb63ea, type: 2}
-    requiredItem: 
-    requiredGold: 0
+    requiredEventId: 
     hpChange: 0
     goldChange: 0
     itemToGive: 

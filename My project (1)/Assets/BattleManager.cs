@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
-    [Header("UI")]
+    [Header("전투 UI")]
     public GameObject battlePanel;
     public TMP_Text battleText;
     public TMP_Text playerHpText;
@@ -13,6 +13,9 @@ public class BattleManager : MonoBehaviour
     public Button attackButton;
     public Button defendButton;
     public Button escapeButton;
+
+    [Header("전투 결과 팝업")]
+    [SerializeField] private BattleResultPopup resultPopup;
 
     private StoryManager storyManager;
     private EnemyData currentEnemy;
@@ -32,6 +35,12 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
+        if (manager == null)
+        {
+            Debug.LogError("StoryManager가 없습니다.");
+            return;
+        }
+
         storyManager = manager;
         currentEnemy = enemy;
         enemyHp = enemy.maxHp;
@@ -45,7 +54,13 @@ public class BattleManager : MonoBehaviour
             $"{currentEnemy.description}\n" +
             $"{currentEnemy.enemyName}과 전투가 시작되었다!";
 
-        
+        /*
+         * 전투를 여러 번 시작하면 리스너가 중복 등록될 수 있으므로
+         * 기존 리스너를 제거한 뒤 다시 등록한다.
+         */
+        attackButton.onClick.RemoveListener(PlayerAttack);
+        defendButton.onClick.RemoveListener(PlayerDefend);
+        escapeButton.onClick.RemoveListener(TryEscape);
 
         attackButton.onClick.AddListener(PlayerAttack);
         defendButton.onClick.AddListener(PlayerDefend);
@@ -61,6 +76,7 @@ public class BattleManager : MonoBehaviour
             return;
 
         int damage = PlayerData.Instance.attack;
+
         enemyHp -= damage;
         enemyHp = Mathf.Max(0, enemyHp);
 
@@ -94,6 +110,9 @@ public class BattleManager : MonoBehaviour
 
     private void EnemyTurn()
     {
+        if (battleEnded || currentEnemy == null)
+            return;
+
         int damage = currentEnemy.attack;
 
         if (playerDefending)
@@ -146,49 +165,107 @@ public class BattleManager : MonoBehaviour
 
     private void Victory()
     {
+        if (battleEnded)
+            return;
+
         battleEnded = true;
         SetButtonsInteractable(false);
 
         PlayerData player = PlayerData.Instance;
 
-        player.ChangeGold(currentEnemy.goldReward);
+        int gainedExperience =
+            currentEnemy.experienceReward;
 
-        if (!string.IsNullOrWhiteSpace(currentEnemy.itemReward))
+        int gainedGold =
+            currentEnemy.goldReward;
+
+        string gainedItem =
+            currentEnemy.itemReward;
+
+        // 보상 지급
+        player.experience += gainedExperience;
+        player.ChangeGold(gainedGold);
+
+        if (!string.IsNullOrWhiteSpace(gainedItem))
         {
-            player.AddItem(currentEnemy.itemReward);
+            player.AddItem(gainedItem);
+        }
+
+        /*
+         * PlayerData에 DefeatEnemy 함수가 실제로 있을 때만 사용한다.
+         * 함수가 없다면 이 부분은 삭제한다.
+         */
+        if (!string.IsNullOrWhiteSpace(currentEnemy.enemyId))
+        {
+            player.DefeatEnemy(currentEnemy.enemyId);
         }
 
         battleText.text =
-            $"{currentEnemy.enemyName}을 쓰러뜨렸다!\n" +
-            $"{currentEnemy.goldReward} 골드를 획득했다.";
+            $"{currentEnemy.enemyName}을 쓰러뜨렸다!";
 
-        if (!string.IsNullOrWhiteSpace(currentEnemy.itemReward))
+        if (resultPopup == null)
         {
-            battleText.text +=
-                $"\n{currentEnemy.itemReward}을 획득했다.";
+            Debug.LogError("BattleResultPopup이 연결되지 않았습니다.");
+
+            // 팝업이 없어도 전투가 멈추지 않도록 바로 종료
+            FinishVictory();
+            return;
         }
 
-        storyManager.FinishBattleVictory();
+        resultPopup.ShowVictoryResult(
+            gainedExperience,
+            gainedGold,
+            gainedItem,
+            FinishVictory
+        );
+    }
+
+    private void FinishVictory()
+    {
+        CloseBattlePanel();
+
+        if (storyManager != null)
+        {
+            storyManager.FinishBattleVictory();
+        }
+
+        currentEnemy = null;
+        enemyHp = 0;
     }
 
     private void Defeat()
     {
+        if (battleEnded)
+            return;
+
         battleEnded = true;
         SetButtonsInteractable(false);
 
         battleText.text = "체력이 모두 떨어졌다.";
+
         storyManager.FinishBattleDefeat();
     }
 
     private void SetButtonsInteractable(bool value)
     {
-        attackButton.interactable = value;
-        defendButton.interactable = value;
-        escapeButton.interactable = value;
+        if (attackButton != null)
+            attackButton.interactable = value;
+
+        if (defendButton != null)
+            defendButton.interactable = value;
+
+        if (escapeButton != null)
+            escapeButton.interactable = value;
     }
 
     private void UpdateBattleUI()
     {
+        if (PlayerData.Instance == null ||
+            currentEnemy == null)
+        {
+            return;
+        }
+
         playerHpText.text =
             $"플레이어 HP: {PlayerData.Instance.hp}" +
             $"/{PlayerData.Instance.maxHp}";
@@ -200,8 +277,12 @@ public class BattleManager : MonoBehaviour
 
     public void CloseBattlePanel()
     {
-        battlePanel.SetActive(false);
+        if (battlePanel != null)
+        {
+            battlePanel.SetActive(false);
+        }
     }
+
     public bool IsInBattle
     {
         get
@@ -228,5 +309,4 @@ public class BattleManager : MonoBehaviour
             return enemyHp;
         }
     }
-
 }
