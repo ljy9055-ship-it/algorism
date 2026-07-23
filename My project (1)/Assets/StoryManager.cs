@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static StoryNode;
 
 public class StoryManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [Header("스토리 배경")]
     [SerializeField] private Image storyBackgroundImage;
+    [Header("대화 진행")]
+    [SerializeField] private Button nextButton;
 
     private void Start()
     {
@@ -46,7 +49,95 @@ public class StoryManager : MonoBehaviour
         storyPanel.SetActive(true);
         storyText.text = currentNode.storyText;
 
-        UpdateChoiceButtons();
+        UpdateStoryBackground(currentNode.backgroundImage);
+        UpdateNodeUI();
+    }
+    private void UpdateNodeUI()
+    {
+        if (currentNode == null)
+            return;
+
+        // 기존 버튼 이벤트 제거
+        if (nextButton != null)
+        {
+            nextButton.onClick.RemoveAllListeners();
+            nextButton.gameObject.SetActive(false);
+        }
+
+        HideAllChoiceButtons();
+
+        switch (currentNode.nodeType)
+        {
+            case StoryNodeType.Dialogue:
+                ShowDialogueNode();
+                break;
+
+            case StoryNodeType.Choice:
+                UpdateChoiceButtons();
+                break;
+        }
+    }
+    private void HideAllChoiceButtons()
+    {
+        foreach (Button button in choiceButtons)
+        {
+            if (button == null)
+                continue;
+
+            button.onClick.RemoveAllListeners();
+            button.gameObject.SetActive(false);
+        }
+    }
+    private void ShowDialogueNode()
+    {
+        if (nextButton == null)
+        {
+            Debug.LogError("Next Button이 연결되지 않았습니다.");
+            return;
+        }
+
+        nextButton.gameObject.SetActive(true);
+        nextButton.interactable = true;
+
+        TMP_Text nextButtonText =
+            nextButton.GetComponentInChildren<TMP_Text>();
+
+        if (nextButtonText != null)
+        {
+            nextButtonText.text =
+                currentNode.nextNode != null ? "다음" : "끝";
+        }
+
+        nextButton.onClick.RemoveAllListeners();
+        nextButton.onClick.AddListener(GoToNextDialogue);
+    }
+    private void GoToNextDialogue()
+    {
+        if (currentNode == null)
+            return;
+
+        StoryNode nextNode = currentNode.nextNode;
+
+        if (nextNode == null)
+        {
+            EndStory();
+            return;
+        }
+
+        currentNode = nextNode;
+        ShowNode();
+    }
+    private void EndStory()
+    {
+        storyText.text = "이야기가 종료되었습니다.";
+
+        if (nextButton != null)
+        {
+            nextButton.gameObject.SetActive(false);
+        }
+
+        HideAllChoiceButtons();
+        UpdateStatusUI();
     }
     private void UpdateStoryBackground(Sprite backgroundSprite)
     {
@@ -308,7 +399,9 @@ public class StoryManager : MonoBehaviour
         battleManager.CloseBattlePanel();
 
         storyText.text = currentNode.storyText;
-        UpdateChoiceButtons();
+
+        UpdateStoryBackground(currentNode.backgroundImage);
+        UpdateNodeUI();
     }
     private bool CanShowChoice(Choice choice)
     {

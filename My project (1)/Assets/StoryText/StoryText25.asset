@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: StoryText25
   m_EditorClassIdentifier: 
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: d4338655463a1aa488a5771bb2f27bd8, type: 2}
   nodeId: 0025
-  storyText: "\"\uACE0\uB300\uC758 \uAE30\uACC4\uC7A5\uCE58\uB77C\uACE0? \uC815\uB9D0\uC774\uC57C?\""
-  backgroundImage: {fileID: 0}
+  storyText: "\"\uACE0\uB300\uC758 \uAE30\uACC4\uC7A5\uCE58\uB77C\uACE0? \uADF8\uAC8C
+    \uC5B4\uB5A4 \uBB3C\uAC74\uC778\uB370?\""
+  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: 
@@ -24,7 +27,7 @@ MonoBehaviour:
   escapeNode: {fileID: 0}
   choices:
   - buttonText: 
-    nextNode: {fileID: 11400000, guid: 4f7fea748a8a5e042b3c684aa3a71fe5, type: 2}
+    nextNode: {fileID: 11400000, guid: d4338655463a1aa488a5771bb2f27bd8, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
     requiredItem: 

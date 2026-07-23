@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: StoryText33
   m_EditorClassIdentifier: 
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: 1ee747d0c4a965f4b857872abc14f16d, type: 2}
   nodeId: 0033
   storyText: 
   backgroundImage: {fileID: 0}

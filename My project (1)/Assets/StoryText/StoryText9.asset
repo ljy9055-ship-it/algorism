@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: StoryText9
   m_EditorClassIdentifier: 
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: 572beac88e61ccf4aaf7f5f466e3324a, type: 2}
   nodeId: 0009
   storyText: "\uAC74\uBB3C\uB4E4\uC744 \uB4A4\uC9C0\uB358 \uB098\uB294 \uBB34\uB108\uC9C4
     \uC794\uD574 \uC0AC\uC774\uC5D0\uC11C \uBB54\uAC00\uB97C \uBC1C\uACAC\uD588\uB2E4."
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: 

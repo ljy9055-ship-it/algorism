@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: StoryText26
   m_EditorClassIdentifier: 
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: d9949d0f102c5ed4aaaf56094d91ea52, type: 2}
   nodeId: 0026
   storyText: "\uB9CC\uC57D \uADF8\uB140\uC758 \uB9D0\uC774 \uC0AC\uC2E4\uC774\uB77C\uBA74,
     \uC5B4\uCA4C\uBA74 \uACE0\uB300\uBB38\uBA85\uC758 \uD798\uC73C\uB85C \uB9C8\uC744\uC744
     \uC7AC\uAC74\uD560 \uC218 \uC788\uC744\uC9C0\uB3C4 \uBAA8\uB978\uB2E4. \uC774
     \uB5A0\uB3CC\uC774 \uC0DD\uD65C\uC744 \uB9C8\uCE60 \uC218 \uC788\uB2E4\uB294
     \uC0DD\uAC01\uC5D0 \uC194\uAE43\uD55C \uAE30\uBD84\uC774 \uB4E4\uC5C8\uB2E4."
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: 

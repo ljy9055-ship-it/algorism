@@ -4,8 +4,12 @@ using UnityEngine;
     fileName = "New Enemy",
     menuName = "Text Game/Enemy"
 )]
+
 public class EnemyData : ScriptableObject
 {
+    [Header("전투 배경")]
+    public Sprite battleBackground;
+
     public string enemyName;
     public string enemyId;
 

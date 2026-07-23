@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fcf7c928e256042bf2805c85f71db9, type: 3}
   m_Name: enemy2
   m_EditorClassIdentifier: 
+  battleBackground: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   enemyName: "\uBAAC\uC2A4\uD130"
   enemyId: 111
   description: "\uAD34\uBB3C\uC774 \uAE38\uC744 \uB9C9\uC544\uC130\uB2E4!"

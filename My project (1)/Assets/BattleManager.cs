@@ -12,7 +12,7 @@ public class BattleManager : MonoBehaviour
 
     public Button attackButton;
     public Button defendButton;
-    public Button escapeButton;
+    
 
     [Header("전투 결과 팝업")]
     [SerializeField] private BattleResultPopup resultPopup;
@@ -23,6 +23,8 @@ public class BattleManager : MonoBehaviour
     private int enemyHp;
     private bool playerDefending;
     private bool battleEnded;
+    [Header("전투 배경")]
+    [SerializeField] private Image battleBackgroundImage;
 
     public void StartBattle(
         EnemyData enemy,
@@ -44,6 +46,7 @@ public class BattleManager : MonoBehaviour
         storyManager = manager;
         currentEnemy = enemy;
         enemyHp = enemy.maxHp;
+        UpdateBattleBackground(currentEnemy.battleBackground);
 
         playerDefending = false;
         battleEnded = false;
@@ -60,11 +63,11 @@ public class BattleManager : MonoBehaviour
          */
         attackButton.onClick.RemoveListener(PlayerAttack);
         defendButton.onClick.RemoveListener(PlayerDefend);
-        escapeButton.onClick.RemoveListener(TryEscape);
+        
 
         attackButton.onClick.AddListener(PlayerAttack);
         defendButton.onClick.AddListener(PlayerDefend);
-        escapeButton.onClick.AddListener(TryEscape);
+        
 
         SetButtonsInteractable(true);
         UpdateBattleUI();
@@ -139,29 +142,24 @@ public class BattleManager : MonoBehaviour
             Defeat();
         }
     }
-
-    private void TryEscape()
+    private void UpdateBattleBackground(Sprite backgroundSprite)
     {
-        if (battleEnded)
+        if (battleBackgroundImage == null)
+        {
+            Debug.LogWarning("전투 배경 Image가 연결되지 않았습니다.");
             return;
-
-        bool escaped = Random.value <= 0.5f;
-
-        if (escaped)
-        {
-            battleEnded = true;
-
-            battleText.text = "전투에서 도망쳤다.";
-            SetButtonsInteractable(false);
-
-            storyManager.FinishBattleEscape();
         }
-        else
+
+        if (backgroundSprite == null)
         {
-            battleText.text = "도망에 실패했다!";
-            EnemyTurn();
+            battleBackgroundImage.enabled = false;
+            return;
         }
+
+        battleBackgroundImage.sprite = backgroundSprite;
+        battleBackgroundImage.enabled = true;
     }
+    
 
     private void Victory()
     {
@@ -254,8 +252,7 @@ public class BattleManager : MonoBehaviour
         if (defendButton != null)
             defendButton.interactable = value;
 
-        if (escapeButton != null)
-            escapeButton.interactable = value;
+        
     }
 
     private void UpdateBattleUI()

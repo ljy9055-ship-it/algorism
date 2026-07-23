@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
+  m_Name: Village1
+  m_EditorClassIdentifier: 
+  nodeType: 1
+  nextNode: {fileID: 0}
+  nodeId: 
+  storyText: 
+  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
+  hpChange: 0
+  goldChange: 0
+  itemToGive: 
+  enemy: {fileID: 0}
+  victoryNode: {fileID: 0}
+  defeatNode: {fileID: 0}
+  escapeNode: {fileID: 0}
+  choices:
+  - buttonText: "\uC0AC\uB0E5"
+    nextNode: {fileID: 0}
+    useRandomNextNode: 1
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+  - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
+    nextNode: {fileID: 11400000, guid: 8ffaf84addfb21e4d8309b29f4d2d824, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: 
+    requiredGold: 100
+    requiredEventId: 
+    hpChange: 0
+    goldChange: -100
+    itemToGive: 
+    itemToRemove: 
+  - buttonText: "\uC2DD\uC0AC(20\uACE8\uB4DC \uC18C\uBAA8)"
+    nextNode: {fileID: 11400000, guid: 2a8966d3df2ae9d429d3b1e2cd9a7519, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: 
+    requiredGold: 20
+    requiredEventId: 
+    hpChange: 100
+    goldChange: -20
+    itemToGive: 
+    itemToRemove: 
+  eventId: 
+  runOnlyOnce: 0

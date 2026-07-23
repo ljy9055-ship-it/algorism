@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: StoryText19
   m_EditorClassIdentifier: 
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: 18a12a8e406dd524f8089149dc875bb6, type: 2}
   nodeId: 0019
   storyText: "\"\uC0AC\uC5F0\uC740 \uC798 \uB4E4\uC5C8\uB2E4. \uADF8\uB7FC \uC774\uB9CC....\""
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: 

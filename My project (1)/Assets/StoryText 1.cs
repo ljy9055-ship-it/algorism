@@ -6,6 +6,16 @@ using UnityEngine;
 )]
 public class StoryNode : ScriptableObject
 {
+    public enum StoryNodeType
+    {
+        Dialogue,   // 일반 대화
+        Choice      // 선택지
+    }
+    [Header("Node Type")]
+    public StoryNodeType nodeType;
+
+    [Header("Dialogue Next Node")]
+    public StoryNode nextNode;
     [Header("Save ID")]
     public string nodeId;
 

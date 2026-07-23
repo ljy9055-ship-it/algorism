@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: StoryText34
   m_EditorClassIdentifier: 
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: 3926675f2069fc64d8678da83ae3edff, type: 2}
   nodeId: 0034
   storyText: "\uB178\uC544:\uC5EC\uAE30\uC5D0\uC694."
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: 93f92f97ad7bfb94fb7beb26e42a705e, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: 
@@ -22,6 +24,17 @@ MonoBehaviour:
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
-  choices: []
+  choices:
+  - buttonText: 
+    nextNode: {fileID: 11400000, guid: 3926675f2069fc64d8678da83ae3edff, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
   eventId: 
   runOnlyOnce: 0
