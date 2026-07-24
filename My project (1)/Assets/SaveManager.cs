@@ -10,7 +10,8 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private StoryDatabase storyDatabase;
     [SerializeField] private BattleManager battleManager;
     [SerializeField] private GameSettings gameSettings;
-    
+    [SerializeField] private EquipmentDatabase equipmentDatabase;
+
     private string SavePath
     {
         get
@@ -69,10 +70,18 @@ public class SaveManager : MonoBehaviour
                 new List<string>(player.inventory),
 
             equippedWeaponId =
-                player.equippedWeaponId,
+    player.equippedWeapon != null
+        ? player.equippedWeapon.equipmentId
+        : string.Empty,
 
             equippedArmorId =
-                player.equippedArmorId,
+    player.equippedArmor != null
+        ? player.equippedArmor.equipmentId
+        : string.Empty,
+            equippedAccessoryId =
+    player.equippedAccessory != null
+        ? player.equippedAccessory.equipmentId
+        : string.Empty,
 
             completedEventIds =
                 new List<string>(player.completedEventIds),
@@ -128,15 +137,18 @@ public class SaveManager : MonoBehaviour
 
             if (savedNode == null)
             {
+                Debug.LogError(
+                    $"저장된 StoryNode를 찾지 못했습니다: {saveData.currentNodeId}"
+                );
                 return;
             }
 
             RestorePlayerData(saveData);
+            RestoreSettings(saveData.settings);
+
             storyManager.LoadStoryNode(savedNode);
 
             Debug.Log("불러오기 완료");
-            RestorePlayerData(saveData);
-            RestoreSettings(saveData.settings);
         }
         catch (System.Exception exception)
         {
@@ -172,6 +184,10 @@ public class SaveManager : MonoBehaviour
     {
         PlayerData player = PlayerData.Instance;
 
+        player.playerName = saveData.playerName;
+        player.level = saveData.level;
+        player.experience = saveData.experience;
+
         player.maxHp = saveData.maxHp;
         player.hp = Mathf.Clamp(
             saveData.hp,
@@ -189,6 +205,52 @@ public class SaveManager : MonoBehaviour
         {
             player.inventory.AddRange(saveData.inventory);
         }
+
+        if (equipmentDatabase != null)
+        {
+            player.equippedWeapon =
+                equipmentDatabase.GetEquipment(
+                    saveData.equippedWeaponId
+                );
+
+            player.equippedArmor =
+                equipmentDatabase.GetEquipment(
+                    saveData.equippedArmorId
+                );
+            player.equippedAccessory =
+    equipmentDatabase.GetEquipment(
+        saveData.equippedAccessoryId
+    );
+        }
+        else
+        {
+            Debug.LogWarning(
+                "EquipmentDatabase가 SaveManager에 연결되지 않았습니다."
+            );
+
+            player.equippedWeapon = null;
+            player.equippedArmor = null;
+        }
+
+        ReplaceList(
+            player.completedEventIds,
+            saveData.completedEventIds
+        );
+
+        ReplaceList(
+            player.openedChestIds,
+            saveData.openedChestIds
+        );
+
+        ReplaceList(
+            player.defeatedEnemyIds,
+            saveData.defeatedEnemyIds
+        );
+
+        ReplaceList(
+            player.completedQuestIds,
+            saveData.completedQuestIds
+        );
     }
 
     public void DeleteSave()

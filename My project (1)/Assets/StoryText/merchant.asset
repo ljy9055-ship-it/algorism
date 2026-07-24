@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: Search
+  m_Name: merchant
   m_EditorClassIdentifier: 
   nodeType: 0
-  nextNode: {fileID: 11400000, guid: eed6f579f979ad94fabf482f346843a6, type: 2}
-  nodeId: 0301
-  storyText: "\uB178\uC544:\uC9C0\uC6D0\uD558\uC2E0 \uACE8\uB4DC\uB85C \uC5F0\uAD6C\uD574\uBCF8
-    \uACB0\uACFC \uAC04\uB2E8\uD55C \uC7A5\uBE44\uB97C \uB9CC\uB4E4 \uC218 \uC788\uAC8C
-    \uB418\uC5C8\uC5B4\uC694!"
-  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
+  nextNode: {fileID: 0}
+  nodeId: 0401
+  storyText: "\uB178\uC544:\uBB34\uC5C7\uC744 \uB9CC\uB4DC\uC2DC\uACA0\uC5B4\uC694?"
+  backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
   itemToGive: 
@@ -26,7 +24,20 @@ MonoBehaviour:
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
-  choices: []
+  choices:
+  - buttonText: 
+    nextNode: {fileID: 0}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}

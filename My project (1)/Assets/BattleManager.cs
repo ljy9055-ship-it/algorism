@@ -116,7 +116,10 @@ public class BattleManager : MonoBehaviour
         if (battleEnded || currentEnemy == null)
             return;
 
-        int damage = currentEnemy.attack;
+        int damage =
+    Mathf.Max(1, currentEnemy.attack - PlayerData.Instance.Defense);
+
+        PlayerData.Instance.ChangeHp(-damage);
 
         if (playerDefending)
         {

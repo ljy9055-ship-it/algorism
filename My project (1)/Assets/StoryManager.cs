@@ -22,7 +22,8 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private Image storyBackgroundImage;
     [Header("대화 진행")]
     [SerializeField] private Button nextButton;
-
+    [SerializeField]
+    private Image characterImage;
     private void Start()
     {
         ShowNode();
@@ -31,6 +32,8 @@ public class StoryManager : MonoBehaviour
 
     private void ShowNode()
     {
+        characterImage.sprite = currentNode.characterSprite;
+        characterImage.enabled = currentNode.characterSprite != null;
         if (currentNode == null)
         {
             Debug.LogError("Current Node가 없습니다.");
@@ -326,6 +329,15 @@ public class StoryManager : MonoBehaviour
         {
             player.RemoveItem(choice.itemToRemove);
         }
+        if (choice.equipmentToGive != null)
+        {
+            playerData.AddEquipment(choice.equipmentToGive);
+
+            if (choice.equipImmediately)
+            {
+                playerData.Equip(choice.equipmentToGive);
+            }
+        }
     }
 
 
@@ -340,10 +352,23 @@ public class StoryManager : MonoBehaviour
             ? string.Join(", ", player.inventory)
             : "없음";
 
+        string weaponName =
+    playerData.equippedWeapon != null
+    ? playerData.equippedWeapon.equipmentName
+    : "없음";
+
+        string armorName =
+            playerData.equippedArmor != null
+            ? playerData.equippedArmor.equipmentName
+            : "없음";
+
         statusText.text =
-            $"체력: {player.hp}\n" +
-            $"골드: {player.gold}\n" +
-            $"아이템: {itemText}";
+            $"체력 : {playerData.hp}/{playerData.MaxHp}\n" +
+            $"골드 : {playerData.gold}\n" +
+            $"공격력 : {playerData.Attack}\n" +
+            $"방어력 : {playerData.Defense}\n" +
+            $"무기 : {weaponName}\n" +
+            $"방어구 : {armorName}";
     }
     public void FinishBattleVictory()
     {

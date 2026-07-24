@@ -10,6 +10,8 @@ public class PlayerData : MonoBehaviour
     public int level = 1;
     public int experience;
 
+  
+
     [Header("Stats")]
     public int hp = 100;
     public int maxHp = 100;
@@ -19,16 +21,23 @@ public class PlayerData : MonoBehaviour
 
     [Header("Inventory")]
     public List<string> inventory = new List<string>();
+    public List<EquipmentData> ownedEquipments =
+    new List<EquipmentData>();
 
-    [Header("Equipment")]
-    public string equippedWeaponId;
-    public string equippedArmorId;
+    [Header("¿Â¬¯ ¿Â∫Ò")]
+    public EquipmentData equippedWeapon;
+    public EquipmentData equippedArmor;
+    public EquipmentData equippedAccessory;
+
+
 
     [Header("Progress")]
     public List<string> completedEventIds = new List<string>();
     public List<string> openedChestIds = new List<string>();
     public List<string> defeatedEnemyIds = new List<string>();
     public List<string> completedQuestIds = new List<string>();
+
+
 
     private void Awake()
     {
@@ -42,6 +51,117 @@ public class PlayerData : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void AddEquipment(EquipmentData equipment)
+    {
+        if (equipment == null)
+            return;
+
+        if (!ownedEquipments.Contains(equipment))
+        {
+            ownedEquipments.Add(equipment);
+            Debug.Log($"{equipment.equipmentName} »πµÊ");
+        }
+    }
+    public void Equip(EquipmentData equipment)
+    {
+        if (equipment == null)
+            return;
+
+        switch (equipment.equipmentType)
+        {
+            case EquipmentType.Weapon:
+                equippedWeapon = equipment;
+                break;
+
+            case EquipmentType.Armor:
+                equippedArmor = equipment;
+                break;
+
+            case EquipmentType.Accessory:
+                equippedAccessory = equipment;
+                break;
+        }
+
+        if (hp > MaxHp)
+            hp = MaxHp;
+
+        Debug.Log($"{equipment.equipmentName} ¿Â¬¯ øœ∑·");
+    }
+    public int Attack
+    {
+        get
+        {
+            int bonus = 0;
+
+            if (equippedWeapon != null)
+                bonus += equippedWeapon.attackBonus;
+
+            if (equippedArmor != null)
+                bonus += equippedArmor.attackBonus;
+
+            if (equippedAccessory != null)
+                bonus += equippedAccessory.attackBonus;
+
+            return attack + bonus;
+        }
+    }
+
+    public int Defense
+    {
+        get
+        {
+            int bonus = 0;
+
+            if (equippedWeapon != null)
+                bonus += equippedWeapon.defenseBonus;
+
+            if (equippedArmor != null)
+                bonus += equippedArmor.defenseBonus;
+
+            if (equippedAccessory != null)
+                bonus += equippedAccessory.defenseBonus;
+
+            return defense + bonus;
+        }
+    }
+    public void Unequip(EquipmentType equipmentType)
+    {
+        switch (equipmentType)
+        {
+            case EquipmentType.Weapon:
+                equippedWeapon = null;
+                break;
+
+            case EquipmentType.Armor:
+                equippedArmor = null;
+                break;
+
+            case EquipmentType.Accessory:
+                equippedAccessory = null;
+                break;
+        }
+
+        if (hp > MaxHp)
+            hp = MaxHp;
+    }
+    public int MaxHp
+    {
+        get
+        {
+            int bonus = 0;
+
+            if (equippedWeapon != null)
+                bonus += equippedWeapon.maxHpBonus;
+
+            if (equippedArmor != null)
+                bonus += equippedArmor.maxHpBonus;
+
+            if (equippedAccessory != null)
+                bonus += equippedAccessory.maxHpBonus;
+
+            return maxHp + bonus;
+        }
+    }
     public void AddExperience(int amount)
     {
         if (amount <= 0)
@@ -137,9 +257,9 @@ public class PlayerData : MonoBehaviour
     public void ChangeHp(int amount)
     {
         hp += amount;
-        hp = Mathf.Clamp(hp, 0, maxHp);
+        hp = Mathf.Clamp(hp, 0, MaxHp);
 
-        Debug.Log($"«ˆ¿Á √º∑¬: {hp}/{maxHp}");
+        Debug.Log($"«ˆ¿Á √º∑¬: {hp}/{MaxHp}");
     }
 
     public void ChangeGold(int amount)

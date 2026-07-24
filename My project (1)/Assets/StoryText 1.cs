@@ -43,6 +43,9 @@ public class StoryNode : ScriptableObject
     [Header("One Time Event")]
     public string eventId;
     public bool runOnlyOnce;
+
+    public Sprite characterSprite;
+
 }
 
 [System.Serializable]
@@ -67,4 +70,7 @@ public class Choice
     public int goldChange;
     public string itemToGive;
     public string itemToRemove;
+    [Header("¿Â∫Ò")]
+    public EquipmentData equipmentToGive;
+    public bool equipImmediately;
 }

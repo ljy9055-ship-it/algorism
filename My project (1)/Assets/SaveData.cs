@@ -27,7 +27,7 @@ public class SaveData
     [Header("Equipment")]
     public string equippedWeaponId;
     public string equippedArmorId;
-
+    public string equippedAccessoryId;
     [Header("Progress")]
     public List<string> completedEventIds = new List<string>();
     public List<string> openedChestIds = new List<string>();
