@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeType: 0
   nextNode: {fileID: 0}
-  nodeId: 
+  nodeId: 0101
   storyText: 
   backgroundImage: {fileID: 21300000, guid: afa4a12bf26e6094e8a03402f5866d39, type: 3}
   hpChange: 0

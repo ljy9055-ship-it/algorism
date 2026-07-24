@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeType: 0
   nextNode: {fileID: 11400000, guid: eed6f579f979ad94fabf482f346843a6, type: 2}
-  nodeId: 
-  storyText: "\uB9CC\uB4DC\uB294 \uC911\uC785\uB2C8\uB2E4."
+  nodeId: 0301
+  storyText: "\uC81C\uC791 \uC608\uC815\uC785\uB2C8\uB2E4. \uC218\uACE0\uD558\uC168\uC2B5\uB2C8\uB2E4."
   backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0

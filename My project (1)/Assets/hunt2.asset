@@ -18,6 +18,6 @@ MonoBehaviour:
   description: "\uBB34\uC5B8\uAC00\uAC00 \uAE30\uC5B4\uC628\uB2E4."
   maxHp: 30
   attack: 5
-  experienceReward: 0
-  goldReward: 0
+  experienceReward: 10
+  goldReward: 10
   itemReward: 
