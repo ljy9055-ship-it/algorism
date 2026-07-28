@@ -19,5 +19,5 @@ MonoBehaviour:
   maxHp: 30
   attack: 5
   experienceReward: 10
-  goldReward: 10
+  goldReward: 20
   itemReward: 

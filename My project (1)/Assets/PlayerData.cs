@@ -85,7 +85,12 @@ public class PlayerData : MonoBehaviour
         if (hp > MaxHp)
             hp = MaxHp;
 
-        Debug.Log($"{equipment.equipmentName} 장착 완료");
+        Debug.Log(
+            $"{equipment.equipmentName} 장착 완료 / " +
+            $"기본 공격력: {attack} / " +
+            $"장비 공격력: {equipment.attackBonus} / " +
+            $"최종 공격력: {Attack}"
+        );
     }
     public int Attack
     {
@@ -206,14 +211,30 @@ public class PlayerData : MonoBehaviour
         return inventory.Remove(itemId);
     }
 
-    public void CompleteEvent(string eventId)
-    {
-        AddUnique(completedEventIds, eventId);
-    }
+   
 
     public bool IsEventCompleted(string eventId)
     {
+        if (string.IsNullOrWhiteSpace(eventId))
+            return false;
+
+        eventId = eventId.Trim();
+
         return completedEventIds.Contains(eventId);
+    }
+
+    public void CompleteEvent(string eventId)
+    {
+        if (string.IsNullOrWhiteSpace(eventId))
+            return;
+
+        eventId = eventId.Trim();
+
+        if (!completedEventIds.Contains(eventId))
+        {
+            completedEventIds.Add(eventId);
+            Debug.Log($"완료 이벤트 추가: {eventId}");
+        }
     }
 
     public void OpenChest(string chestId)

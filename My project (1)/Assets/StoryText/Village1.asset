@@ -41,6 +41,8 @@ MonoBehaviour:
     itemToRemove: 
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
   - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
     nextNode: {fileID: 11400000, guid: 8ffaf84addfb21e4d8309b29f4d2d824, type: 2}
     useRandomNextNode: 0
@@ -57,6 +59,8 @@ MonoBehaviour:
     itemToRemove: 
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
+    hideAfterComplete: 1
+    completeEventId: search_first
   - buttonText: "\uC2DD\uC0AC(20\uACE8\uB4DC \uC18C\uBAA8)"
     nextNode: {fileID: 11400000, guid: 2a8966d3df2ae9d429d3b1e2cd9a7519, type: 2}
     useRandomNextNode: 0
@@ -73,6 +77,44 @@ MonoBehaviour:
     itemToRemove: 
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+  - buttonText: "\uC0C1\uC810"
+    nextNode: {fileID: 11400000, guid: 6c7c209bd76325c41a47a7d22557a9e0, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 0101
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+  - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
+    nextNode: {fileID: 11400000, guid: 27aac5d13b6bb18419e27a45d473ed4c, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: 
+    requiredGold: 100
+    requiredEventId: 0101
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 1
+    completeEventId: Search2
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}

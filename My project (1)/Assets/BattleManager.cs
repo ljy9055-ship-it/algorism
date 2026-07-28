@@ -78,7 +78,15 @@ public class BattleManager : MonoBehaviour
         if (battleEnded)
             return;
 
-        int damage = PlayerData.Instance.attack;
+        PlayerData player = PlayerData.Instance;
+
+        if (player == null)
+        {
+            Debug.LogError("PlayerData.Instance가 없습니다.");
+            return;
+        }
+
+        int damage = player.Attack;
 
         enemyHp -= damage;
         enemyHp = Mathf.Max(0, enemyHp);
@@ -86,6 +94,13 @@ public class BattleManager : MonoBehaviour
         battleText.text =
             $"{currentEnemy.enemyName}에게 " +
             $"{damage}의 피해를 주었다!";
+
+        Debug.Log(
+            $"기본 공격력: {player.attack}, " +
+            $"최종 공격력: {player.Attack}, " +
+            $"장착 무기: " +
+            $"{(player.equippedWeapon != null ? player.equippedWeapon.equipmentName : "없음")}"
+        );
 
         UpdateBattleUI();
 
@@ -97,7 +112,6 @@ public class BattleManager : MonoBehaviour
 
         EnemyTurn();
     }
-
     private void PlayerDefend()
     {
         if (battleEnded)
@@ -106,33 +120,39 @@ public class BattleManager : MonoBehaviour
         playerDefending = true;
 
         battleText.text =
-            "방어 자세를 취했다. 이번 공격의 피해가 감소한다.";
+            "방어 자세를 취했다.\n" +
+            "이번 적 공격의 피해가 절반으로 감소한다.";
 
         EnemyTurn();
     }
-
     private void EnemyTurn()
     {
         if (battleEnded || currentEnemy == null)
             return;
 
-        int damage =
-    Mathf.Max(1, currentEnemy.attack - PlayerData.Instance.Defense);
+        PlayerData player = PlayerData.Instance;
 
-        PlayerData.Instance.ChangeHp(-damage);
+        if (player == null)
+        {
+            Debug.LogError("PlayerData.Instance가 없습니다.");
+            return;
+        }
 
+        // 장비 보너스를 포함한 최종 방어력 적용
+        int finalDamage = Mathf.Max(
+            1,
+            currentEnemy.attack - player.Defense
+        );
+
+        // 방어 중이면 최종 피해 절반
         if (playerDefending)
         {
-            damage = Mathf.Max(1, damage / 2);
+            finalDamage = Mathf.Max(1, finalDamage / 2);
             playerDefending = false;
         }
 
-        int finalDamage = Mathf.Max(
-            1,
-            damage - PlayerData.Instance.defense
-        );
-
-        PlayerData.Instance.ChangeHp(-finalDamage);
+        // 피해는 한 번만 적용
+        player.ChangeHp(-finalDamage);
 
         battleText.text +=
             $"\n{currentEnemy.enemyName}의 공격!" +
@@ -140,7 +160,7 @@ public class BattleManager : MonoBehaviour
 
         UpdateBattleUI();
 
-        if (PlayerData.Instance.hp <= 0)
+        if (player.hp <= 0)
         {
             Defeat();
         }
@@ -268,7 +288,7 @@ public class BattleManager : MonoBehaviour
 
         playerHpText.text =
             $"플레이어 HP: {PlayerData.Instance.hp}" +
-            $"/{PlayerData.Instance.maxHp}";
+            $"/{PlayerData.Instance.MaxHp}";
 
         enemyHpText.text =
             $"{currentEnemy.enemyName} HP: " +

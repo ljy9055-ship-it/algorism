@@ -11,6 +11,8 @@ public class StoryNode : ScriptableObject
         Dialogue,   // 일반 대화
         Choice      // 선택지
     }
+    
+
     [Header("Node Type")]
     public StoryNodeType nodeType;
 
@@ -39,10 +41,11 @@ public class StoryNode : ScriptableObject
 
     [Header("Choices")]
     public Choice[] choices;
-
+    
     [Header("One Time Event")]
     public string eventId;
     public bool runOnlyOnce;
+    
 
     public Sprite characterSprite;
 
@@ -73,4 +76,9 @@ public class Choice
     [Header("장비")]
     public EquipmentData equipmentToGive;
     public bool equipImmediately;
+    [Header("한 번만 표시")]
+    public bool hideAfterComplete;
+
+    public string completeEventId;
+
 }

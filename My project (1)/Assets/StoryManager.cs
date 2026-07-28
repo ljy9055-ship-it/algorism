@@ -12,35 +12,42 @@ public class StoryManager : MonoBehaviour
 
     [Header("Start Story")]
     public StoryNode currentNode;
+
     [Header("Panels")]
     public GameObject storyPanel;
 
     [Header("Battle")]
     public BattleManager battleManager;
     [SerializeField] private PlayerData playerData;
-    [Header("½ºÅä¸® ¹è°æ")]
+
+    [Header("ìŠ¤í† ë¦¬ ë°°ê²½")]
     [SerializeField] private Image storyBackgroundImage;
-    [Header("´ëÈ­ ÁøÇà")]
+
+    [Header("ëŒ€í™” ì§„í–‰")]
     [SerializeField] private Button nextButton;
-    [SerializeField]
-    private Image characterImage;
+
+    [SerializeField] private Image characterImage;
+
     private void Start()
     {
         ShowNode();
     }
 
-
     private void ShowNode()
     {
-        characterImage.sprite = currentNode.characterSprite;
-        characterImage.enabled = currentNode.characterSprite != null;
         if (currentNode == null)
         {
-            Debug.LogError("Current Node°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("Current Nodeê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        ApplyNodeEffects();
+        if (characterImage != null)
+        {
+            characterImage.sprite = currentNode.characterSprite;
+            characterImage.enabled = currentNode.characterSprite != null;
+        }
+
+        ApplyNodeEffects(currentNode);
         UpdateStatusUI();
 
         if (currentNode.enemy != null)
@@ -55,12 +62,13 @@ public class StoryManager : MonoBehaviour
         UpdateStoryBackground(currentNode.backgroundImage);
         UpdateNodeUI();
     }
+
     private void UpdateNodeUI()
     {
         if (currentNode == null)
             return;
 
-        // ±âÁ¸ ¹öÆ° ÀÌº¥Æ® Á¦°Å
+        // ë‹¤ìŒ ë²„íŠ¼ ì´ë²¤íŠ¸ ì´ˆê¸°í™”
         if (nextButton != null)
         {
             nextButton.onClick.RemoveAllListeners();
@@ -80,6 +88,7 @@ public class StoryManager : MonoBehaviour
                 break;
         }
     }
+
     private void HideAllChoiceButtons()
     {
         foreach (Button button in choiceButtons)
@@ -91,11 +100,12 @@ public class StoryManager : MonoBehaviour
             button.gameObject.SetActive(false);
         }
     }
+
     private void ShowDialogueNode()
     {
         if (nextButton == null)
         {
-            Debug.LogError("Next ButtonÀÌ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("Next Buttonì´ ì—°ê²°ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -108,12 +118,13 @@ public class StoryManager : MonoBehaviour
         if (nextButtonText != null)
         {
             nextButtonText.text =
-                currentNode.nextNode != null ? "´ÙÀ½" : "³¡";
+                currentNode.nextNode != null ? "ë‹¤ìŒ" : "ë";
         }
 
         nextButton.onClick.RemoveAllListeners();
         nextButton.onClick.AddListener(GoToNextDialogue);
     }
+
     private void GoToNextDialogue()
     {
         if (currentNode == null)
@@ -130,9 +141,10 @@ public class StoryManager : MonoBehaviour
         currentNode = nextNode;
         ShowNode();
     }
+
     private void EndStory()
     {
-        storyText.text = "ÀÌ¾ß±â°¡ Á¾·áµÇ¾ú½À´Ï´Ù.";
+        storyText.text = "ì´ì•¼ê¸°ê°€ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.";
 
         if (nextButton != null)
         {
@@ -142,11 +154,12 @@ public class StoryManager : MonoBehaviour
         HideAllChoiceButtons();
         UpdateStatusUI();
     }
+
     private void UpdateStoryBackground(Sprite backgroundSprite)
     {
         if (storyBackgroundImage == null)
         {
-            Debug.LogWarning("½ºÅä¸® ¹è°æ Image°¡ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("ìŠ¤í† ë¦¬ ë°°ê²½ Imageê°€ ì—°ê²°ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -159,6 +172,7 @@ public class StoryManager : MonoBehaviour
         storyBackgroundImage.sprite = backgroundSprite;
         storyBackgroundImage.enabled = true;
     }
+
     private void StartBattle()
     {
         storyPanel.SetActive(false);
@@ -169,65 +183,151 @@ public class StoryManager : MonoBehaviour
         );
     }
 
-    private void ApplyNodeEffects()
+    private void ApplyNodeEffects(StoryNode node)
     {
-        if (currentNode == null)
+        if (node == null)
             return;
 
-        bool alreadyCompleted =
-            !string.IsNullOrEmpty(currentNode.eventId) &&
-            playerData.IsEventCompleted(currentNode.eventId);
+        PlayerData player = PlayerData.Instance;
 
-        if (currentNode.runOnlyOnce && alreadyCompleted)
+        if (player == null)
         {
+            Debug.LogError("PlayerData.Instanceë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        playerData.ChangeHp(currentNode.hpChange);
-        playerData.ChangeGold(currentNode.goldChange);
+        string eventId = node.eventId?.Trim();
 
-        if (!string.IsNullOrEmpty(currentNode.itemToGive))
+        Debug.Log(
+            $"[ì´ë²¤íŠ¸ ì§„ì…] " +
+            $"ë…¸ë“œ={node.nodeId}, " +
+            $"ì´ë²¤íŠ¸ID=[{eventId}], " +
+            $"1íšŒì„±={node.runOnlyOnce}, " +
+            $"ì™„ë£Œë¨={player.IsEventCompleted(eventId)}"
+        );
+
+        if (node.runOnlyOnce)
         {
-            playerData.AddItem(currentNode.itemToGive);
+            if (string.IsNullOrWhiteSpace(eventId))
+            {
+                Debug.LogError(
+                    $"ë…¸ë“œ '{node.nodeId}'ëŠ” Run Only Onceê°€ ì¼œì ¸ ìˆì§€ë§Œ Event IDê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤."
+                );
+
+                return;
+            }
+
+            if (player.IsEventCompleted(eventId))
+            {
+                Debug.Log($"ì´ë¯¸ ì‹¤í–‰ëœ ì´ë²¤íŠ¸ì´ë¯€ë¡œ íš¨ê³¼ë¥¼ ê±´ë„ˆëœë‹ˆë‹¤: {eventId}");
+                return;
+            }
         }
 
-        if (!string.IsNullOrEmpty(currentNode.eventId))
+        if (node.hpChange != 0)
         {
-            playerData.CompleteEvent(currentNode.eventId);
+            player.ChangeHp(node.hpChange);
         }
+
+        if (node.goldChange != 0)
+        {
+            player.ChangeGold(node.goldChange);
+        }
+
+        if (!string.IsNullOrWhiteSpace(node.itemToGive))
+        {
+            player.AddItem(node.itemToGive);
+        }
+
+        if (node.runOnlyOnce)
+        {
+            player.CompleteEvent(eventId);
+
+            Debug.Log(
+                $"ì´ë²¤íŠ¸ ê¸°ë¡ ì™„ë£Œ: {eventId}\n" +
+                $"í˜„ì¬ ì™„ë£Œ ì´ë²¤íŠ¸: {string.Join(", ", player.completedEventIds)}"
+            );
+        }
+
+        UpdateStatusUI();
     }
-
 
     private void UpdateChoiceButtons()
     {
         if (currentNode == null)
         {
-            Debug.LogError("ÇöÀç StoryNode°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("í˜„ì¬ StoryNodeê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        for (int i = 0; i < choiceButtons.Length; i++)
-        {
-            Button button = choiceButtons[i];
+        PlayerData player = PlayerData.Instance;
 
+        if (player == null)
+        {
+            Debug.LogError("PlayerData.Instanceë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+            return;
+        }
+
+        // ê¸°ì¡´ ë²„íŠ¼ ìƒíƒœì™€ í´ë¦­ ì´ë²¤íŠ¸ ì´ˆê¸°í™”
+        foreach (Button button in choiceButtons)
+        {
             if (button == null)
                 continue;
 
             button.onClick.RemoveAllListeners();
+            button.gameObject.SetActive(false);
+        }
 
-            if (currentNode.choices == null ||
-                i >= currentNode.choices.Length)
-            {
-                button.gameObject.SetActive(false);
+        if (currentNode.choices == null)
+            return;
+
+        // ì‹¤ì œ í™”ë©´ì— ì‚¬ìš©í•  ë²„íŠ¼ ë²ˆí˜¸
+        int buttonIndex = 0;
+
+        // ë…¸ë“œì— ë“¤ì–´ ìˆëŠ” ëª¨ë“  ì„ íƒì§€ë¥¼ ìˆœì„œëŒ€ë¡œ ê²€ì‚¬
+        for (int choiceIndex = 0;
+             choiceIndex < currentNode.choices.Length;
+             choiceIndex++)
+        {
+            Choice choice = currentNode.choices[choiceIndex];
+
+            if (choice == null)
                 continue;
+
+            // Hide After Complete ì„ íƒì§€ê°€ ì´ë¯¸ ì™„ë£Œëë‹¤ë©´ ê±´ë„ˆëœ€
+            if (choice.hideAfterComplete)
+            {
+                string completeId = choice.completeEventId?.Trim();
+
+                bool completed =
+                    !string.IsNullOrWhiteSpace(completeId) &&
+                    player.IsEventCompleted(completeId);
+
+                if (completed)
+                {
+                    Debug.Log(
+                        $"[ì„ íƒì§€ ìˆ¨ê¹€] " +
+                        $"ì„ íƒì§€={choice.buttonText}, " +
+                        $"ID=[{completeId}]"
+                    );
+
+                    continue;
+                }
             }
 
-            Choice choice = currentNode.choices[i];
-
-            // ÇÊ¿äÇÑ ÀÌº¥Æ®¸¦ º¸Áö ¾Ê¾Ò´Ù¸é ¹öÆ° ¼û±â±â
+            // í•„ìš”í•œ ì´ë²¤íŠ¸ ì¡°ê±´ì„ ë§Œì¡±í•˜ì§€ ëª»í•˜ë©´ ê±´ë„ˆëœ€
             if (!CanShowChoice(choice))
+                continue;
+
+            // ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ë²„íŠ¼ì„ ëª¨ë‘ ì±„ì› ë‹¤ë©´ ì¢…ë£Œ
+            if (buttonIndex >= choiceButtons.Length)
+                break;
+
+            Button button = choiceButtons[buttonIndex];
+
+            if (button == null)
             {
-                button.gameObject.SetActive(false);
+                buttonIndex++;
                 continue;
             }
 
@@ -242,15 +342,29 @@ public class StoryManager : MonoBehaviour
                 buttonText.text = choice.buttonText;
             }
 
-            int capturedIndex = i;
+            // í™”ë©´ ë²„íŠ¼ ë²ˆí˜¸ê°€ ì•„ë‹ˆë¼ ì›ë˜ Choice ë°°ì—´ ë²ˆí˜¸ë¥¼ ì €ì¥
+            int capturedChoiceIndex = choiceIndex;
 
+            button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>
             {
-                SelectChoice(capturedIndex);
+                SelectChoice(capturedChoiceIndex);
             });
+
+            // ë‹¤ìŒ í‘œì‹œ ë²„íŠ¼ìœ¼ë¡œ ì´ë™
+            buttonIndex++;
+        }
+
+        // ì‚¬ìš©ë˜ì§€ ì•Šì€ ë‚˜ë¨¸ì§€ ë²„íŠ¼ ìˆ¨ê¸°ê¸°
+        for (int i = buttonIndex; i < choiceButtons.Length; i++)
+        {
+            if (choiceButtons[i] == null)
+                continue;
+
+            choiceButtons[i].onClick.RemoveAllListeners();
+            choiceButtons[i].gameObject.SetActive(false);
         }
     }
-
     private bool CanSelectChoice(Choice choice)
     {
         PlayerData player = PlayerData.Instance;
@@ -274,7 +388,7 @@ public class StoryManager : MonoBehaviour
             index < 0 ||
             index >= currentNode.choices.Length)
         {
-            Debug.LogError("Àß¸øµÈ ¼±ÅÃÁö ÀÎµ¦½ºÀÔ´Ï´Ù.");
+            Debug.LogError("ì˜ëª»ëœ ì„ íƒì§€ ì¸ë±ìŠ¤ì…ë‹ˆë‹¤.");
             return;
         }
 
@@ -282,12 +396,37 @@ public class StoryManager : MonoBehaviour
 
         if (selectedChoice == null)
         {
-            Debug.LogError("¼±ÅÃÁö µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("ì„ íƒì§€ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
         if (!CanSelectChoice(selectedChoice))
             return;
+
+        // ì„ íƒì§€ë¥¼ ì‚¬ìš©í–ˆë‹¤ëŠ” ê¸°ë¡ì„ ë¨¼ì € ì €ì¥
+        if (selectedChoice.hideAfterComplete)
+        {
+            string completeId = selectedChoice.completeEventId?.Trim();
+
+            if (string.IsNullOrWhiteSpace(completeId))
+            {
+                Debug.LogError(
+                    $"'{selectedChoice.buttonText}' ì„ íƒì§€ëŠ” Hide After Completeê°€ ì²´í¬ë˜ì–´ ìˆì§€ë§Œ " +
+                    "Complete Event Idê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤."
+                );
+            }
+            else
+            {
+                PlayerData.Instance.CompleteEvent(completeId);
+
+                Debug.Log(
+                    $"[ì„ íƒì§€ ì™„ë£Œ ì €ì¥] " +
+                    $"ì„ íƒì§€={selectedChoice.buttonText}, " +
+                    $"ID=[{completeId}], " +
+                    $"ì €ì¥ ê²°ê³¼={PlayerData.Instance.IsEventCompleted(completeId)}"
+                );
+            }
+        }
 
         ApplyChoiceEffects(selectedChoice);
 
@@ -299,7 +438,7 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            storyText.text = "ÀÌ¾ß±â°¡ Á¾·áµÇ¾ú½À´Ï´Ù.";
+            storyText.text = "ì´ì•¼ê¸°ê°€ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.";
 
             foreach (Button button in choiceButtons)
             {
@@ -329,17 +468,17 @@ public class StoryManager : MonoBehaviour
         {
             player.RemoveItem(choice.itemToRemove);
         }
+
         if (choice.equipmentToGive != null)
         {
-            playerData.AddEquipment(choice.equipmentToGive);
+            player.AddEquipment(choice.equipmentToGive);
 
             if (choice.equipImmediately)
             {
-                playerData.Equip(choice.equipmentToGive);
+                player.Equip(choice.equipmentToGive);
             }
         }
     }
-
 
     private void UpdateStatusUI()
     {
@@ -348,28 +487,28 @@ public class StoryManager : MonoBehaviour
 
         PlayerData player = PlayerData.Instance;
 
-        string itemText = player.inventory.Count > 0
-            ? string.Join(", ", player.inventory)
-            : "¾øÀ½";
+        if (player == null)
+            return;
 
         string weaponName =
-    playerData.equippedWeapon != null
-    ? playerData.equippedWeapon.equipmentName
-    : "¾øÀ½";
+            player.equippedWeapon != null
+                ? player.equippedWeapon.equipmentName
+                : "ì—†ìŒ";
 
         string armorName =
-            playerData.equippedArmor != null
-            ? playerData.equippedArmor.equipmentName
-            : "¾øÀ½";
+            player.equippedArmor != null
+                ? player.equippedArmor.equipmentName
+                : "ì—†ìŒ";
 
         statusText.text =
-            $"Ã¼·Â : {playerData.hp}/{playerData.MaxHp}\n" +
-            $"°ñµå : {playerData.gold}\n" +
-            $"°ø°İ·Â : {playerData.Attack}\n" +
-            $"¹æ¾î·Â : {playerData.Defense}\n" +
-            $"¹«±â : {weaponName}\n" +
-            $"¹æ¾î±¸ : {armorName}";
+            $"ì²´ë ¥ : {player.hp}/{player.MaxHp}\n" +
+            $"ê³¨ë“œ : {player.gold}\n" +
+            $"ê³µê²©ë ¥ : {player.Attack}\n" +
+            $"ë°©ì–´ë ¥ : {player.Defense}\n" +
+            $"ë¬´ê¸° : {weaponName}\n" +
+            $"ë°©ì–´êµ¬ : {armorName}";
     }
+
     public void FinishBattleVictory()
     {
         battleManager.CloseBattlePanel();
@@ -393,23 +532,28 @@ public class StoryManager : MonoBehaviour
         currentNode = currentNode.escapeNode;
         ShowNode();
     }
+
     public void LoadStoryNode(StoryNode loadedNode)
     {
         if (loadedNode == null)
         {
-            Debug.LogError("ºÒ·¯¿Ã StoryNode°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("ë¶ˆëŸ¬ì˜¨ StoryNodeê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
         currentNode = loadedNode;
-
         ShowLoadedNode();
     }
+
     private void ShowLoadedNode()
     {
         if (currentNode == null)
-        {
             return;
+
+        if (characterImage != null)
+        {
+            characterImage.sprite = currentNode.characterSprite;
+            characterImage.enabled = currentNode.characterSprite != null;
         }
 
         UpdateStatusUI();
@@ -428,42 +572,47 @@ public class StoryManager : MonoBehaviour
         UpdateStoryBackground(currentNode.backgroundImage);
         UpdateNodeUI();
     }
+
     private bool CanShowChoice(Choice choice)
     {
         if (choice == null)
             return false;
 
-        // ÇÊ¿äÇÑ ÀÌº¥Æ®°¡ ÁöÁ¤µÇÁö ¾Ê¾Ò´Ù¸é Ç¥½Ã
-        if (string.IsNullOrEmpty(choice.requiredEventId))
+        if (string.IsNullOrWhiteSpace(choice.requiredEventId))
             return true;
 
-        // ÇØ´ç ÀÌº¥Æ®¸¦ ¿Ï·áÇßÀ» ¶§¸¸ Ç¥½Ã
-        return playerData.IsEventCompleted(choice.requiredEventId);
+        PlayerData player = PlayerData.Instance;
+
+        if (player == null)
+            return false;
+
+        return player.IsEventCompleted(choice.requiredEventId.Trim());
     }
+
     private StoryNode GetNextNode(Choice choice)
     {
         if (choice == null)
             return null;
 
-        // ·£´ı ÀÌµ¿À» »ç¿ëÇÏÁö ¾Ê´Â °æ¿ì
+        // ëœë¤ ì´ë™ì„ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ê²½ìš°
         if (!choice.useRandomNextNode)
         {
             return choice.nextNode;
         }
 
-        // ·£´ı ³ëµå ¹è¿­ÀÌ ºñ¾î ÀÖ´Â °æ¿ì ±âº» ³ëµå »ç¿ë
+        // ëœë¤ ë…¸ë“œ ë°°ì—´ì´ ë¹„ì–´ ìˆëŠ” ê²½ìš° ê¸°ë³¸ ë…¸ë“œ ì‚¬ìš©
         if (choice.randomNextNodes == null ||
             choice.randomNextNodes.Length == 0)
         {
             Debug.LogWarning(
-                $"'{choice.buttonText}' ¼±ÅÃÁöÀÇ ·£´ı ³ëµå°¡ ºñ¾î ÀÖ½À´Ï´Ù. " +
-                "±âº» Next Node·Î ÀÌµ¿ÇÕ´Ï´Ù."
+                $"'{choice.buttonText}' ì„ íƒì§€ì˜ ëœë¤ ë…¸ë“œê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤. " +
+                "ê¸°ë³¸ Next Nodeë¡œ ì´ë™í•©ë‹ˆë‹¤."
             );
 
             return choice.nextNode;
         }
 
-        // ¹è¿­¿¡ µé¾î ÀÖ´Â null ³ëµå¸¦ Á¦¿ÜÇÏ°í ¼±ÅÃ
+        // ë°°ì—´ì— ë“¤ì–´ ìˆëŠ” null ë…¸ë“œë¥¼ ì œì™¸í•˜ê³  ê³„ì‚°
         int validNodeCount = 0;
 
         foreach (StoryNode node in choice.randomNextNodes)
@@ -477,7 +626,7 @@ public class StoryManager : MonoBehaviour
         if (validNodeCount == 0)
         {
             Debug.LogWarning(
-                $"'{choice.buttonText}' ¼±ÅÃÁöÀÇ ·£´ı ³ëµå°¡ ¸ğµÎ ºñ¾î ÀÖ½À´Ï´Ù."
+                $"'{choice.buttonText}' ì„ íƒì§€ì˜ ëœë¤ ë…¸ë“œê°€ ëª¨ë‘ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤."
             );
 
             return choice.nextNode;
@@ -496,12 +645,9 @@ public class StoryManager : MonoBehaviour
         }
 
         int randomIndex = Random.Range(0, validNodes.Length);
-
         StoryNode selectedNode = validNodes[randomIndex];
 
-        Debug.Log(
-            $"·£´ı ½ºÅä¸® ¼±ÅÃ: {selectedNode.nodeId}"
-        );
+        Debug.Log($"ëœë¤ ìŠ¤í† ë¦¬ ì„ íƒ: {selectedNode.nodeId}");
 
         return selectedNode;
     }

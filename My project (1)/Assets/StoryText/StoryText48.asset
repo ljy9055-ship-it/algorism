@@ -28,3 +28,4 @@ MonoBehaviour:
   choices: []
   eventId: 
   runOnlyOnce: 0
+  characterSprite: {fileID: 21300000, guid: 89334c090de6e2a44b3f609344b803b9, type: 3}
