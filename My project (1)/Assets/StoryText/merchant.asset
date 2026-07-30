@@ -38,8 +38,8 @@ MonoBehaviour:
     itemToRemove: 
     equipmentToGive: {fileID: 11400000, guid: 0d9738ff4faf4e348b6b4ac47df479dd, type: 2}
     equipImmediately: 1
-    hideAfterComplete: 0
-    completeEventId: 
+    hideAfterComplete: 1
+    completeEventId: merchant1
   - buttonText: "\uC9C8\uAE34\uC637(50\uACE8\uB4DC)"
     nextNode: {fileID: 11400000}
     useRandomNextNode: 0
@@ -53,23 +53,23 @@ MonoBehaviour:
     itemToRemove: 
     equipmentToGive: {fileID: 11400000, guid: d919a59ff2c6c2a478eb327e09b2013e, type: 2}
     equipImmediately: 1
-    hideAfterComplete: 0
-    completeEventId: 
-  - buttonText: "\uB5A0\uB09C\uB2E4"
-    nextNode: {fileID: 11400000, guid: eed6f579f979ad94fabf482f346843a6, type: 2}
+    hideAfterComplete: 1
+    completeEventId: merchant2
+  - buttonText: "\uC7A5\uAC11(50\uACE8\uB4DC)"
+    nextNode: {fileID: 11400000}
     useRandomNextNode: 0
     randomNextNodes: []
     requiredItem: 
-    requiredGold: 0
+    requiredGold: 50
     requiredEventId: 
     hpChange: 0
-    goldChange: 0
+    goldChange: -50
     itemToGive: 
     itemToRemove: 
-    equipmentToGive: {fileID: 0}
-    equipImmediately: 0
-    hideAfterComplete: 0
-    completeEventId: 
+    equipmentToGive: {fileID: 11400000, guid: 40fe2c0624a4c7f46b47e583f9f4b66f, type: 2}
+    equipImmediately: 1
+    hideAfterComplete: 1
+    completeEventId: merchant3
   - buttonText: "\uB5A0\uB09C\uB2E4"
     nextNode: {fileID: 11400000, guid: eed6f579f979ad94fabf482f346843a6, type: 2}
     useRandomNextNode: 0
