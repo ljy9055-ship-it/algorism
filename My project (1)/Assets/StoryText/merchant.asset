@@ -61,7 +61,7 @@ MonoBehaviour:
     randomNextNodes: []
     requiredItem: 
     requiredGold: 50
-    requiredEventId: 
+    requiredEventId: 0201
     hpChange: 0
     goldChange: -50
     itemToGive: 

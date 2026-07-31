@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: Search3
+  m_Name: ranger
   m_EditorClassIdentifier: 
   nodeType: 0
-  nextNode: {fileID: 11400000, guid: 05e89e55f6baec64c9ca7a90851ab141, type: 2}
-  nodeId: 0303
-  storyText: "\uB178\uC544:\uC774\uBC88 \uC5F0\uAD6C\uB85C \uC0AC\uB78C\uB4E4\uC774
-    \uBA38\uBB3C \uC218 \uC788\uB294 \uAC70\uCC98\uB97C \uB9CC\uB4E4 \uC218 \uC788\uAC8C
-    \uB418\uC5C8\uC5B4\uC694!"
+  nextNode: {fileID: 11400000, guid: 7e891b2a95b53124e8e1d38a1b60852b, type: 2}
+  nodeId: 0050
+  storyText: "???:\uC0AC\uB78C\uC740 \uB2E4 \uB5A0\uB09C \uC904 \uC54C\uC558\uB294\uB370...
+    \uC544\uC9C1 \uC8FC\uBBFC\uC774 \uB0A8\uC544\uC788\uC5C8\uB098?"
   backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0
@@ -27,6 +26,6 @@ MonoBehaviour:
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices: []
-  eventId: 0303
-  runOnlyOnce: 1
-  characterSprite: {fileID: 21300000, guid: 89334c090de6e2a44b3f609344b803b9, type: 3}
+  eventId: 
+  runOnlyOnce: 0
+  characterSprite: {fileID: 21300000, guid: 49b61ee995a65d544aea34ed7acb0911, type: 3}

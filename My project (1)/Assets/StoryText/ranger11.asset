@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: village2
+  m_Name: ranger11
   m_EditorClassIdentifier: 
   nodeType: 0
-  nextNode: {fileID: 0}
-  nodeId: 0050
-  storyText: 
-  backgroundImage: {fileID: 0}
+  nextNode: {fileID: 11400000, guid: cb1f00ef32ced884b96c494b35ec1c93, type: 2}
+  nodeId: 0060
+  storyText: "\uB85C\uBE48:\uC88B\uC544, \uC774 \uC815\uB3C4\uBA74 \uD55C\uBC88 \uAC78\uC5B4\uBCFC
+    \uB9CC \uD558\uC9C0."
+  backgroundImage: {fileID: 21300000, guid: e607411d9f2827546a973fc4c5a1dd0d, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: 
@@ -27,4 +28,4 @@ MonoBehaviour:
   choices: []
   eventId: 
   runOnlyOnce: 0
-  characterSprite: {fileID: 0}
+  characterSprite: {fileID: 21300000, guid: 49b61ee995a65d544aea34ed7acb0911, type: 3}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fcf7c928e256042bf2805c85f71db9, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  battleBackground: {fileID: 21300000, guid: afa4a12bf26e6094e8a03402f5866d39, type: 3}
+  enemyName: "\uB4DC\uB798\uACE4"
+  enemyId: 999
+  description: "\uD06C\uC544\uC559 \uD22C\uBA85\uD558\uC9C4 \uC54A\uC740 \uB4DC\uB798\uACE4\uC774
+    \uC6B8\uBD80\uC9C0\uC800\uB530"
+  maxHp: 150
+  attack: 20
+  experienceReward: 999
+  goldReward: 200
+  itemReward: "\uB4DC\uB798\uACE4\uD558\uD2B8"

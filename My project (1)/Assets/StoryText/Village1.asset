@@ -108,7 +108,7 @@ MonoBehaviour:
     requiredGold: 100
     requiredEventId: 0101
     hpChange: 0
-    goldChange: 0
+    goldChange: -100
     itemToGive: 
     itemToRemove: 
     equipmentToGive: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
     hideAfterComplete: 1
     completeEventId: Search2
   - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
-    nextNode: {fileID: 11400000, guid: 27aac5d13b6bb18419e27a45d473ed4c, type: 2}
+    nextNode: {fileID: 11400000, guid: b5b829fad4d4e3348b372ee8824f48fc, type: 2}
     useRandomNextNode: 0
     randomNextNodes:
     - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
@@ -124,15 +124,33 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
     requiredItem: 
     requiredGold: 100
-    requiredEventId: 0101
+    requiredEventId: 0201
+    hpChange: 0
+    goldChange: -100
+    itemToGive: 
+    itemToRemove: 
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 1
+    completeEventId: Search3
+  - buttonText: "\uBCF4\uC2A4\uC804"
+    nextNode: {fileID: 11400000, guid: 97d4e87d3c98f634fbe89bcdef8fef8a, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 0303
     hpChange: 0
     goldChange: 0
     itemToGive: 
     itemToRemove: 
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
-    hideAfterComplete: 1
-    completeEventId: Search2
+    hideAfterComplete: 0
+    completeEventId: 
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}
