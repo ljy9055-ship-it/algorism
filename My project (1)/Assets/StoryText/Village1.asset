@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
   m_Name: Village1
   m_EditorClassIdentifier: 
+  itemGiveAmount: 1
   nodeType: 1
   nextNode: {fileID: 0}
   nodeId: 0049
@@ -43,6 +44,12 @@ MonoBehaviour:
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
     nextNode: {fileID: 11400000, guid: 8ffaf84addfb21e4d8309b29f4d2d824, type: 2}
     useRandomNextNode: 0
@@ -61,6 +68,12 @@ MonoBehaviour:
     equipImmediately: 0
     hideAfterComplete: 1
     completeEventId: search_first
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   - buttonText: "\uC2DD\uC0AC(20\uACE8\uB4DC \uC18C\uBAA8)"
     nextNode: {fileID: 11400000, guid: 2a8966d3df2ae9d429d3b1e2cd9a7519, type: 2}
     useRandomNextNode: 0
@@ -71,7 +84,7 @@ MonoBehaviour:
     requiredItem: 
     requiredGold: 20
     requiredEventId: 
-    hpChange: 100
+    hpChange: 50
     goldChange: -20
     itemToGive: 
     itemToRemove: 
@@ -79,6 +92,12 @@ MonoBehaviour:
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   - buttonText: "\uC0C1\uC810"
     nextNode: {fileID: 11400000, guid: 6c7c209bd76325c41a47a7d22557a9e0, type: 2}
     useRandomNextNode: 0
@@ -97,6 +116,12 @@ MonoBehaviour:
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
     nextNode: {fileID: 11400000, guid: 27aac5d13b6bb18419e27a45d473ed4c, type: 2}
     useRandomNextNode: 0
@@ -115,6 +140,12 @@ MonoBehaviour:
     equipImmediately: 0
     hideAfterComplete: 1
     completeEventId: Search2
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   - buttonText: "\uC5F0\uAD6C(100\uACE8\uB4DC \uC18C\uBAA8)"
     nextNode: {fileID: 11400000, guid: b5b829fad4d4e3348b372ee8824f48fc, type: 2}
     useRandomNextNode: 0
@@ -133,6 +164,12 @@ MonoBehaviour:
     equipImmediately: 0
     hideAfterComplete: 1
     completeEventId: Search3
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   - buttonText: "\uBCF4\uC2A4\uC804"
     nextNode: {fileID: 11400000, guid: 97d4e87d3c98f634fbe89bcdef8fef8a, type: 2}
     useRandomNextNode: 0
@@ -149,8 +186,39 @@ MonoBehaviour:
     itemToRemove: 
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
+    hideAfterComplete: 1
+    completeEventId: 9999
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
+  - buttonText: "\uB9C8\uC744\uC744 \uBC1C\uC804\uC2DC\uD0A8\uB2E4(\uB4DC\uB798\uACE4\uD558\uD2B8
+      \uC18C\uBAA8)"
+    nextNode: {fileID: 11400000, guid: 3b54ed03b927b21449c5d6c2bd4d8c25, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes:
+    - {fileID: 11400000, guid: 2b73cf16f12b03c49a2a8bfbee9afcc4, type: 2}
+    - {fileID: 11400000, guid: 13daa19f85641ce4185ef132aeab8298, type: 2}
+    - {fileID: 11400000, guid: bc66948e2425fde41bfe21485339ac49, type: 2}
+    requiredItem: "\uB4DC\uB798\uACE4\uD558\uD2B8"
+    requiredGold: 0
+    requiredEventId: 9999
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: "\uB4DC\uB798\uACE4\uD558\uD2B8"
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 1
+    itemRemoveAmount: 1
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}

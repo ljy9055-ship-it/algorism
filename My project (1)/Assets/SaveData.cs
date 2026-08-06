@@ -22,21 +22,35 @@ public class SaveData
     public int gold;
 
     [Header("Inventory")]
-    public List<string> inventory = new List<string>();
+    public List<ItemStackData> inventory =
+        new List<ItemStackData>();
 
     [Header("Equipment")]
     public string equippedWeaponId;
     public string equippedArmorId;
     public string equippedAccessoryId;
+
     [Header("Progress")]
-    public List<string> completedEventIds = new List<string>();
-    public List<string> openedChestIds = new List<string>();
-    public List<string> defeatedEnemyIds = new List<string>();
-    public List<string> completedQuestIds = new List<string>();
+    public List<string> completedEventIds =
+        new List<string>();
+
+    public List<string> openedChestIds =
+        new List<string>();
+
+    public List<string> defeatedEnemyIds =
+        new List<string>();
+
+    public List<string> completedQuestIds =
+        new List<string>();
+
+    public List<EventCounter> eventCounters =
+        new List<EventCounter>();
 
     [Header("Battle")]
-    public BattleSaveData battle = new BattleSaveData();
+    public BattleSaveData battle =
+        new BattleSaveData();
 
     [Header("Settings")]
-    public SettingsSaveData settings = new SettingsSaveData();
+    public SettingsSaveData settings =
+        new SettingsSaveData();
 }

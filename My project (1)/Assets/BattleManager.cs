@@ -1,9 +1,17 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
+    [Header("아이템 UI")]
+    [SerializeField] private Button itemButton;
+    [SerializeField] private GameObject itemPanel;
+    [SerializeField] private Button[] itemChoiceButtons;
+    [SerializeField] private Button closeItemPanelButton;
+    [SerializeField] private ItemDatabase itemDatabase;
+
     [Header("전투 UI")]
     public GameObject battlePanel;
     public TMP_Text battleText;
@@ -65,14 +73,210 @@ public class BattleManager : MonoBehaviour
         defendButton.onClick.RemoveListener(PlayerDefend);
         
 
+
         attackButton.onClick.AddListener(PlayerAttack);
         defendButton.onClick.AddListener(PlayerDefend);
-        
+
+        itemButton.onClick.RemoveListener(OpenItemPanel);
+        closeItemPanelButton.onClick.RemoveListener(CloseItemPanel);
+
+        itemButton.onClick.AddListener(OpenItemPanel);
+        closeItemPanelButton.onClick.AddListener(CloseItemPanel);
+        if (itemPanel != null)
+        {
+            itemPanel.SetActive(false);
+        }
 
         SetButtonsInteractable(true);
         UpdateBattleUI();
-    }
 
+    }
+    private void OpenItemPanel()
+    {
+        if (battleEnded)
+            return;
+
+        if (itemPanel == null)
+        {
+            Debug.LogError("ItemPanel이 연결되지 않았습니다.");
+            return;
+        }
+
+        itemPanel.SetActive(true);
+
+        RefreshItemButtons();
+    }
+    private void CloseItemPanel()
+    {
+        if (itemPanel != null)
+        {
+            itemPanel.SetActive(false);
+        }
+    }
+    private void RefreshItemButtons()
+    {
+        PlayerData player = PlayerData.Instance;
+
+        if (player == null || itemDatabase == null)
+            return;
+
+        foreach (Button button in itemChoiceButtons)
+        {
+            if (button == null)
+                continue;
+
+            button.onClick.RemoveAllListeners();
+            button.gameObject.SetActive(false);
+        }
+
+        int buttonIndex = 0;
+
+        foreach (KeyValuePair<string, int> pair in player.Inventory)
+        {
+            if (buttonIndex >= itemChoiceButtons.Length)
+                break;
+
+            ItemData item = itemDatabase.GetItem(pair.Key);
+
+            if (item == null)
+                continue;
+
+            if (!item.usableInBattle)
+                continue;
+
+            if (pair.Value <= 0)
+                continue;
+
+            Button button = itemChoiceButtons[buttonIndex];
+
+            if (button == null)
+            {
+                buttonIndex++;
+                continue;
+            }
+
+            button.gameObject.SetActive(true);
+            button.interactable = true;
+
+            TMP_Text buttonText =
+                button.GetComponentInChildren<TMP_Text>();
+
+            if (buttonText != null)
+            {
+                buttonText.text =
+                    $"{item.itemName} x{pair.Value}";
+            }
+
+            string capturedItemId = item.itemId;
+
+            button.onClick.AddListener(() =>
+            {
+                UseBattleItem(capturedItemId);
+            });
+
+            buttonIndex++;
+        }
+    }
+    private void UseBattleItem(string itemId)
+    {
+        if (battleEnded)
+            return;
+
+        PlayerData player = PlayerData.Instance;
+
+        if (player == null || itemDatabase == null)
+            return;
+
+        ItemData item = itemDatabase.GetItem(itemId);
+
+        if (item == null)
+            return;
+
+        if (!item.usableInBattle)
+        {
+            battleText.text =
+                $"{item.itemName}은 전투 중 사용할 수 없다.";
+            return;
+        }
+
+        if (!player.HasItem(item.itemId))
+        {
+            battleText.text =
+                $"{item.itemName}을 가지고 있지 않다.";
+
+            RefreshItemButtons();
+            return;
+        }
+
+        bool itemUsed = false;
+
+        switch (item.itemType)
+        {
+            case ItemType.Healing:
+                {
+                    if (player.hp >= player.MaxHp)
+                    {
+                        battleText.text =
+                            "이미 체력이 가득 차 있다.";
+                        return;
+                    }
+
+                    int hpBefore = player.hp;
+
+                    player.ChangeHp(item.healAmount);
+
+                    int actualHeal =
+                        player.hp - hpBefore;
+
+                    battleText.text =
+                        $"{item.itemName}을 사용했다!\n" +
+                        $"체력을 {actualHeal} 회복했다.";
+
+                    itemUsed = true;
+                    break;
+                }
+
+            case ItemType.Damage:
+                {
+                    enemyHp -= item.damageAmount;
+                    enemyHp = Mathf.Max(0, enemyHp);
+
+                    battleText.text =
+                        $"{item.itemName}을 사용했다!\n" +
+                        $"{currentEnemy.enemyName}에게 " +
+                        $"{item.damageAmount}의 피해를 주었다.";
+
+                    itemUsed = true;
+                    break;
+                }
+
+            default:
+                {
+                    battleText.text =
+                        $"{item.itemName}의 효과는 아직 구현되지 않았다.";
+                    return;
+                }
+        }
+
+        if (!itemUsed)
+            return;
+
+        if (item.consumable)
+        {
+            player.RemoveItem(item.itemId, 1);
+        }
+
+        CloseItemPanel();
+        UpdateBattleUI();
+
+        if (enemyHp <= 0)
+        {
+            Victory();
+            return;
+        }
+
+        EnemyTurn();
+    }
     private void PlayerAttack()
     {
         if (battleEnded)
@@ -275,7 +479,10 @@ public class BattleManager : MonoBehaviour
         if (defendButton != null)
             defendButton.interactable = value;
 
-        
+        if (itemButton != null)
+        {
+            itemButton.interactable = value;
+        }
     }
 
     private void UpdateBattleUI()

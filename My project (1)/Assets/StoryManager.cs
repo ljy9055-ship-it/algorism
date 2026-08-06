@@ -1,10 +1,14 @@
 using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static StoryNode;
 
 public class StoryManager : MonoBehaviour
 {
+    [SerializeField]
+    private ItemDatabase itemDatabase;
+
     [Header("UI")]
     public TMP_Text storyText;
     public TMP_Text statusText;
@@ -32,9 +36,38 @@ public class StoryManager : MonoBehaviour
     {
         ShowNode();
     }
+    private string GetInventoryText()
+    {
+        PlayerData player = PlayerData.Instance;
 
+        if (player == null)
+            return "없음";
+
+        if (player.Inventory.Count == 0)
+            return "없음";
+
+        List<string> list = new List<string>();
+
+        foreach (var pair in player.Inventory)
+        {
+            ItemData item =
+                itemDatabase != null
+                ? itemDatabase.GetItem(pair.Key)
+                : null;
+
+            string name =
+                item != null
+                ? item.itemName
+                : pair.Key;
+
+            list.Add($"{name} x{pair.Value}");
+        }
+
+        return string.Join(", ", list);
+    }
     private void ShowNode()
     {
+        PlayerData.Instance.AddEventCount(currentNode.nodeId);
         if (currentNode == null)
         {
             Debug.LogError("Current Node가 없습니다.");
@@ -236,7 +269,10 @@ public class StoryManager : MonoBehaviour
 
         if (!string.IsNullOrWhiteSpace(node.itemToGive))
         {
-            player.AddItem(node.itemToGive);
+            player.AddItem(
+                node.itemToGive,
+                node.itemGiveAmount
+            );
         }
 
         if (node.runOnlyOnce)
@@ -277,6 +313,7 @@ public class StoryManager : MonoBehaviour
             button.onClick.RemoveAllListeners();
             button.gameObject.SetActive(false);
         }
+        
 
         if (currentNode.choices == null)
             return;
@@ -353,6 +390,24 @@ public class StoryManager : MonoBehaviour
 
             // 다음 표시 버튼으로 이동
             buttonIndex++;
+            if (!string.IsNullOrEmpty(choice.hideAfterCountEventId))
+            {
+                if (PlayerData.Instance.GetEventCount(
+                    choice.hideAfterCountEventId)
+                    >= choice.hideAfterCount)
+                {
+                    continue;
+                }
+            }
+            if (!string.IsNullOrEmpty(choice.requiredCountEventId))
+            {
+                if (PlayerData.Instance.GetEventCount(
+                    choice.requiredCountEventId)
+                    < choice.requiredCount)
+                {
+                    continue;
+                }
+            }
         }
 
         // 사용되지 않은 나머지 버튼 숨기기
@@ -461,12 +516,18 @@ public class StoryManager : MonoBehaviour
 
         if (!string.IsNullOrWhiteSpace(choice.itemToGive))
         {
-            player.AddItem(choice.itemToGive);
+            player.AddItem(
+                choice.itemToGive,
+                choice.itemGiveAmount
+            );
         }
 
         if (!string.IsNullOrWhiteSpace(choice.itemToRemove))
         {
-            player.RemoveItem(choice.itemToRemove);
+            player.RemoveItem(
+                choice.itemToRemove,
+                choice.itemRemoveAmount
+            );
         }
 
         if (choice.equipmentToGive != null)
@@ -501,12 +562,13 @@ public class StoryManager : MonoBehaviour
                 : "없음";
 
         statusText.text =
-            $"체력 : {player.hp}/{player.MaxHp}\n" +
-            $"골드 : {player.gold}\n" +
-            $"공격력 : {player.Attack}\n" +
-            $"방어력 : {player.Defense}\n" +
-            $"무기 : {weaponName}\n" +
-            $"방어구 : {armorName}";
+    $"체력 : {player.hp}/{player.MaxHp}\n" +
+    $"골드 : {player.gold}\n" +
+    $"공격력 : {player.Attack}\n" +
+    $"방어력 : {player.Defense}\n" +
+    $"무기 : {weaponName}\n" +
+    $"방어구 : {armorName}\n" +
+    $"아이템 : {GetInventoryText()}";
     }
 
     public void FinishBattleVictory()

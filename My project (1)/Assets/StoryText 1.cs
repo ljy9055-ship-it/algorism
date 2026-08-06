@@ -11,7 +11,7 @@ public class StoryNode : ScriptableObject
         Dialogue,   // 일반 대화
         Choice      // 선택지
     }
-    
+    public int itemGiveAmount = 1;
 
     [Header("Node Type")]
     public StoryNodeType nodeType;
@@ -80,5 +80,13 @@ public class Choice
     public bool hideAfterComplete;
 
     public string completeEventId;
+    [Header("횟수 조건")]
+    public string requiredCountEventId;
+    public string hideAfterCountEventId;
 
+    public int requiredCount;
+    public int hideAfterCount;
+
+    public int itemGiveAmount = 1;
+    public int itemRemoveAmount = 1;
 }

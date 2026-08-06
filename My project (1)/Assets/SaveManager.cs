@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+
     [Header("References")]
     [SerializeField] private StoryManager storyManager;
     [SerializeField] private StoryDatabase storyDatabase;
@@ -12,6 +13,62 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private GameSettings gameSettings;
     [SerializeField] private EquipmentDatabase equipmentDatabase;
 
+    private List<EventCounter> CopyEventCounters(
+    List<EventCounter> source
+)
+    {
+        List<EventCounter> result =
+            new List<EventCounter>();
+
+        if (source == null)
+            return result;
+
+        foreach (EventCounter counter in source)
+        {
+            if (counter == null)
+                continue;
+
+            result.Add(new EventCounter
+            {
+                eventId = counter.eventId.Trim(),
+                count = Mathf.Max(0, counter.count)
+            });
+        }
+
+        return result;
+    }
+    private List<ItemStackData> CreateInventorySaveData(
+    PlayerData player
+)
+    {
+        List<ItemStackData> result =
+            new List<ItemStackData>();
+
+        if (player == null)
+            return result;
+
+        foreach (
+            KeyValuePair<string, int> pair
+            in player.Inventory
+        )
+        {
+            if (string.IsNullOrWhiteSpace(pair.Key))
+                continue;
+
+            if (pair.Value <= 0)
+                continue;
+
+            result.Add(
+                new ItemStackData
+                {
+                    itemId = pair.Key,
+                    amount = pair.Value
+                }
+            );
+        }
+
+        return result;
+    }
     private string SavePath
     {
         get
@@ -67,7 +124,7 @@ public class SaveManager : MonoBehaviour
             gold = player.gold,
 
             inventory =
-                new List<string>(player.inventory),
+    CreateInventorySaveData(player),
 
             equippedWeaponId =
     player.equippedWeapon != null
@@ -94,11 +151,15 @@ public class SaveManager : MonoBehaviour
 
             completedQuestIds =
                 new List<string>(player.completedQuestIds),
+            
+            eventCounters =
+            CopyEventCounters(player.eventCounters),
 
             battle = CreateBattleSaveData(),
 
             settings = CreateSettingsSaveData()
         };
+
 
         string json = JsonUtility.ToJson(saveData, true);
 
@@ -199,11 +260,26 @@ public class SaveManager : MonoBehaviour
         player.defense = saveData.defense;
         player.gold = Mathf.Max(0, saveData.gold);
 
-        player.inventory.Clear();
+        player.ClearInventory();
 
         if (saveData.inventory != null)
         {
-            player.inventory.AddRange(saveData.inventory);
+            foreach (ItemStackData savedItem in saveData.inventory)
+            {
+                if (savedItem == null)
+                    continue;
+
+                if (string.IsNullOrWhiteSpace(savedItem.itemId))
+                    continue;
+
+                if (savedItem.amount <= 0)
+                    continue;
+
+                player.SetItemCount(
+                    savedItem.itemId,
+                    savedItem.amount
+                );
+            }
         }
 
         if (equipmentDatabase != null)
@@ -230,6 +306,7 @@ public class SaveManager : MonoBehaviour
 
             player.equippedWeapon = null;
             player.equippedArmor = null;
+            player.equippedAccessory = null;
         }
 
         ReplaceList(
@@ -251,6 +328,32 @@ public class SaveManager : MonoBehaviour
             player.completedQuestIds,
             saveData.completedQuestIds
         );
+        player.eventCounters.Clear();
+
+        if (saveData.eventCounters != null)
+        {
+            foreach (EventCounter savedCounter in saveData.eventCounters)
+            {
+                if (savedCounter == null)
+                    continue;
+
+                if (string.IsNullOrWhiteSpace(savedCounter.eventId))
+                    continue;
+
+                player.eventCounters.Add(
+                    new EventCounter
+                    {
+                        eventId = savedCounter.eventId.Trim(),
+                        count = Mathf.Max(0, savedCounter.count)
+                    }
+                );
+            }
+        }
+        player.hp = Mathf.Clamp(
+    player.hp,
+    0,
+    player.MaxHp
+);
     }
 
     public void DeleteSave()
@@ -318,5 +421,6 @@ public class SaveManager : MonoBehaviour
             textSpeed = gameSettings.textSpeed
         };
     }
+
 
 }

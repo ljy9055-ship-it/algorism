@@ -1,6 +1,13 @@
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
+[System.Serializable]
+public class EventCounter
+{
+    public string eventId;
+    public int count;
+}
 public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance { get; private set; }
@@ -20,7 +27,10 @@ public class PlayerData : MonoBehaviour
     public int gold;
 
     [Header("Inventory")]
-    public List<string> inventory = new List<string>();
+    private Dictionary<string, int> inventory =
+    new Dictionary<string, int>();
+
+    public IReadOnlyDictionary<string, int> Inventory => inventory;
     public List<EquipmentData> ownedEquipments =
     new List<EquipmentData>();
 
@@ -37,6 +47,8 @@ public class PlayerData : MonoBehaviour
     public List<string> defeatedEnemyIds = new List<string>();
     public List<string> completedQuestIds = new List<string>();
 
+    [Header("Event Counters")]
+    public List<EventCounter> eventCounters = new();
 
 
     private void Awake()
@@ -193,25 +205,80 @@ public class PlayerData : MonoBehaviour
             requiredExperience = level * 100;
         }
     }
-    public void AddItem(string itemId)
+    public void AddItem(string itemId, int amount = 1)
     {
         if (string.IsNullOrWhiteSpace(itemId))
             return;
 
-        inventory.Add(itemId);
+        if (amount <= 0)
+            return;
+
+        itemId = itemId.Trim();
+
+        if (inventory.ContainsKey(itemId))
+        {
+            inventory[itemId] += amount;
+        }
+        else
+        {
+            inventory.Add(itemId, amount);
+        }
+
+        Debug.Log(
+            $"{itemId} 획득: {amount}개 / 현재 {inventory[itemId]}개"
+        );
     }
 
-    public bool HasItem(string itemId)
+    public bool HasItem(string itemId, int amount = 1)
     {
-        return inventory.Contains(itemId);
+        if (string.IsNullOrWhiteSpace(itemId))
+            return false;
+
+        if (amount <= 0)
+            return true;
+
+        itemId = itemId.Trim();
+
+        return inventory.TryGetValue(itemId, out int count) &&
+               count >= amount;
     }
 
-    public bool RemoveItem(string itemId)
+    public bool RemoveItem(string itemId, int amount = 1)
     {
-        return inventory.Remove(itemId);
+        if (!HasItem(itemId, amount))
+            return false;
+
+        itemId = itemId.Trim();
+        inventory[itemId] -= amount;
+
+        if (inventory[itemId] <= 0)
+        {
+            inventory.Remove(itemId);
+        }
+
+        Debug.Log($"{itemId} {amount}개 사용");
+
+        return true;
     }
 
-   
+    public int GetItemCount(string itemId)
+    {
+        if (string.IsNullOrWhiteSpace(itemId))
+            return 0;
+
+        itemId = itemId.Trim();
+
+        return inventory.TryGetValue(itemId, out int count)
+            ? count
+            : 0;
+    }
+
+    public void ClearInventory()
+    {
+        inventory.Clear();
+    }
+
+
 
     public bool IsEventCompleted(string eventId)
     {
@@ -289,5 +356,78 @@ public class PlayerData : MonoBehaviour
         gold = Mathf.Max(0, gold);
 
         Debug.Log($"현재 골드: {gold}");
+    }
+    public void AddEventCount(string eventId, int amount = 1)
+    {
+        if (string.IsNullOrWhiteSpace(eventId))
+            return;
+
+        if (amount <= 0)
+            return;
+
+        eventId = eventId.Trim();
+
+        EventCounter counter =
+            eventCounters.Find(
+                item =>
+                    item != null &&
+                    item.eventId == eventId
+            );
+
+        if (counter == null)
+        {
+            counter = new EventCounter
+            {
+                eventId = eventId,
+                count = 0
+            };
+
+            eventCounters.Add(counter);
+        }
+
+        counter.count += amount;
+
+        Debug.Log(
+            $"이벤트 카운트 증가: {eventId} = {counter.count}"
+        );
+    }
+
+    public int GetEventCount(string eventId)
+    {
+        if (string.IsNullOrWhiteSpace(eventId))
+            return 0;
+
+        eventId = eventId.Trim();
+
+        EventCounter counter =
+            eventCounters.Find(
+                item =>
+                    item != null &&
+                    item.eventId == eventId
+            );
+
+        return counter != null
+            ? counter.count
+            : 0;
+    }
+    public Dictionary<string, int> GetInventoryCopy()
+    {
+        return new Dictionary<string, int>(inventory);
+    }
+
+    public void SetItemCount(string itemId, int amount)
+    {
+        if (string.IsNullOrWhiteSpace(itemId))
+            return;
+
+        itemId = itemId.Trim();
+
+        if (amount <= 0)
+        {
+            inventory.Remove(itemId);
+            return;
+        }
+
+        inventory[itemId] = amount;
     }
 }
