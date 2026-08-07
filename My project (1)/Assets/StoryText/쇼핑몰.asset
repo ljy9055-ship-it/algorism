@@ -25,7 +25,30 @@ MonoBehaviour:
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
-  choices: []
+  choices:
+  - buttonText: "\uB098\uC544\uAC04\uB2E4"
+    nextNode: {fileID: 0}
+    useRandomNextNode: 1
+    randomNextNodes:
+    - {fileID: 11400000, guid: 3964650edf0d3f24c8ffa8645794380c, type: 2}
+    - {fileID: 11400000, guid: 663462b780dd3df4e9ed379b332d937f, type: 2}
+    requiredItem: 
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: 
+    itemToRemove: 
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    hideAfterCountEventId: 
+    requiredCount: 0
+    hideAfterCount: 0
+    itemGiveAmount: 0
+    itemRemoveAmount: 0
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}

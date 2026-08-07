@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fcf7c928e256042bf2805c85f71db9, type: 3}
+  m_Name: "\uC1FC\uD551\uBAB02"
+  m_EditorClassIdentifier: 
+  battleBackground: {fileID: 0}
+  enemyName: "\uD649\uACE0\uBE14\uB9B0"
+  enemyId: 116
+  description: 
+  maxHp: 100
+  attack: 20
+  experienceReward: 40
+  goldReward: 100
+  itemReward: 
