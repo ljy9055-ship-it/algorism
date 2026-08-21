@@ -1,0 +1,58 @@
+화면 목록
+1. TitleScreen
+   - 시작 버튼
+   - 설정 버튼
+   - 종료 버튼
+
+2. PlayHud
+   - 플레이어 체력바
+   - 점수 Text
+   - 남은 시간 Text
+   - 목표 안내 Text
+
+3. PauseMenu
+   - 계속하기 버튼
+   - 설정 버튼
+   - 타이틀로 돌아가기 버튼
+
+4. ResultScreen
+   - 최종 점수
+   - 처치한 몬스터 수
+   - 다시하기 버튼
+
+입력 인터페이스
+Move      : WASD / Left Stick
+Attack    : Mouse Left Button / Gamepad South Button
+Pause     : Esc / Start Button
+Submit    : Enter / Gamepad South Button
+Cancel    : Esc / Gamepad East Button
+Navigate  : Arrow Keys / D-Pad / Left Stick
+
+UI 프리팹 후보
+HealthBar
+ScoreText
+MenuButton
+OptionSlider
+InventorySlot
+ToastMessage
+
+
+Unity 오브젝트 구조 초안
+Canvas
+└── UIRoot[UIFlowController]
+    ├── Screen_Title
+    ├── Screen_PlayHud
+    │   ├── HealthBar
+    │   ├── ScoreText
+    │   ├── TimeText
+    │   └── ObjectiveText
+    ├── Screen_Pause
+    └── Screen_Result
+
+EventSystem
+
+리소스와 콘셉트 결정
+글꼴 : 학교안심 보드마카 R
+버튼 상태: 기본은 짙은 파랑, 선택은 밝은 파랑, 비활성은 회색
+체력 경고: 30% 이하이면 체력바를 빨간색으로 변경
+점수 피드백: 적 처치 후 "Score +10" Toast 표시

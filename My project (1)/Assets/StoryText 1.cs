@@ -31,7 +31,7 @@ public class StoryNode : ScriptableObject
     [Header("Node Effects")]
     public int hpChange;
     public int goldChange;
-    public string itemToGive;
+    public ItemData itemToGive;
 
     [Header("Battle")]
     public EnemyData enemy;

@@ -16,6 +16,14 @@ My project (1)/Logs/
 My project (1)/UserSettings/
 My project (1)/Build/
 My project (1)/Builds/
+GameUIUXLab/Library/
+GameUIUXLab/Temp/
+GameUIUXLab/Obj/
+GameUIUXLab/Logs/
+GameUIUXLab/UserSettings/
+GameUIUXLab/Build/
+GameUIUXLab/Builds/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
