@@ -62,31 +62,37 @@ public class Choice
     public bool useRandomNextNode;
     public StoryNode[] randomNextNodes;
 
-    [Header("선택 조건")]
-    public string requiredItem;
-    public int requiredGold;
+    [Header("아이템 조건")]
+    public ItemData requiredItem;
+    public int requiredItemCount = 1;
 
+    public int requiredGold;
     public string requiredEventId;
 
     [Header("선택 결과")]
     public int hpChange;
     public int goldChange;
-    public string itemToGive;
-    public string itemToRemove;
+
+    public ItemData itemToGive;
+    public int itemGiveAmount = 1;
+
+    public ItemData itemToRemove;
+    public int itemRemoveAmount = 1;
+
     [Header("장비")]
     public EquipmentData equipmentToGive;
     public bool equipImmediately;
+
     [Header("한 번만 표시")]
     public bool hideAfterComplete;
-
     public string completeEventId;
+
     [Header("횟수 조건")]
     public string requiredCountEventId;
-    public string hideAfterCountEventId;
-
     public int requiredCount;
+
+    public string hideAfterCountEventId;
     public int hideAfterCount;
 
-    public int itemGiveAmount = 1;
-    public int itemRemoveAmount = 1;
+    public string hideAfterEventId;
 }

@@ -19,8 +19,10 @@ public class EnemyData : ScriptableObject
     public int maxHp = 30;
     public int attack = 5;
 
-    [Header("승리 보상")]
+    [Header("보상")]
     public int experienceReward;
     public int goldReward;
-    public string itemReward;
+
+    public ItemData itemReward;
+    public int itemRewardAmount = 1;
 }

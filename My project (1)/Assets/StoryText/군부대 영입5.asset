@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: "\uAD70\uBD80\uB300 \uD0D0\uD5D8\uC644\uB8CC"
+  m_Name: "\uAD70\uBD80\uB300 \uC601\uC7855"
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
-  nodeType: 0
+  nodeType: 1
   nextNode: {fileID: 0}
   nodeId: 
-  storyText: "\uD0D0\uC0AC\uB97C \uC644\uB8CC\uD588\uB2E4"
-  backgroundImage: {fileID: 21300000, guid: 65c8a0c38fc887a48a3fa5fa6a48e9cd, type: 3}
+  storyText: "\uC774\uD55C:\uADF8\uB807\uB2E4\uBA74 \uC800\uB97C \uB9C8\uC744\uC758
+    \uC77C\uC6D0\uC73C\uB85C \uBC1B\uC544\uC8FC\uC2DC\uACA0\uC2B5\uB2C8\uAE4C? \uD6C8\uB828\uC5D0
+    \uB3C4\uC6C0\uC744 \uC904 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
   itemToGive: {fileID: 0}
@@ -26,8 +28,8 @@ MonoBehaviour:
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices:
-  - buttonText: "\uB3CC\uC544\uAC04\uB2E4"
-    nextNode: {fileID: 11400000, guid: 009fa82ebcde7eb48a1975132fbfbe6a, type: 2}
+  - buttonText: "\uC218\uB77D\uD55C\uB2E4"
+    nextNode: {fileID: 11400000, guid: 995681922f229054f91c379a3ac5b0a0, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
     requiredItem: {fileID: 0}
@@ -42,21 +44,21 @@ MonoBehaviour:
     itemRemoveAmount: 0
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
-    hideAfterComplete: 1
-    completeEventId: 00001
+    hideAfterComplete: 0
+    completeEventId: 
     requiredCountEventId: 
     requiredCount: 0
     hideAfterCountEventId: 
     hideAfterCount: 0
     hideAfterEventId: 
-  - buttonText: "\uB3CC\uC544\uAC04\uB2E4"
-    nextNode: {fileID: 11400000, guid: eb5e5d7c00e39e043bf8cfbd6a344621, type: 2}
+  - buttonText: "\uAC70\uC808\uD55C\uB2E4"
+    nextNode: {fileID: 11400000, guid: 40658b8d1e46cfa418a7447d127fb578, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
     requiredItem: {fileID: 0}
     requiredItemCount: 0
     requiredGold: 0
-    requiredEventId: 00001
+    requiredEventId: 
     hpChange: 0
     goldChange: 0
     itemToGive: {fileID: 0}

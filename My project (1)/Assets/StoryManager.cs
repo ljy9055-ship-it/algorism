@@ -267,11 +267,14 @@ public class StoryManager : MonoBehaviour
             player.ChangeGold(node.goldChange);
         }
 
-        if (!string.IsNullOrWhiteSpace(node.itemToGive))
+        if (node.itemToGive != null)
         {
-            player.AddItem(
-                node.itemToGive,
-                node.itemGiveAmount
+            player.AddItem(node.itemToGive.itemId);
+
+            Debug.Log(
+                $"[노드 아이템 지급] " +
+                $"{node.itemToGive.itemName} " +
+                $"({node.itemToGive.itemId})"
             );
         }
 
@@ -424,10 +427,18 @@ public class StoryManager : MonoBehaviour
     {
         PlayerData player = PlayerData.Instance;
 
-        if (!string.IsNullOrWhiteSpace(choice.requiredItem))
+        if (player == null)
+            return false;
+
+        if (choice.requiredItem != null)
         {
-            if (!player.HasItem(choice.requiredItem))
+            if (!player.HasItem(
+                choice.requiredItem.itemId,
+                choice.requiredItemCount
+            ))
+            {
                 return false;
+            }
         }
 
         if (player.gold < choice.requiredGold)
@@ -514,19 +525,29 @@ public class StoryManager : MonoBehaviour
         player.ChangeHp(choice.hpChange);
         player.ChangeGold(choice.goldChange);
 
-        if (!string.IsNullOrWhiteSpace(choice.itemToGive))
+        if (choice.itemToGive != null)
         {
             player.AddItem(
-                choice.itemToGive,
+                choice.itemToGive.itemId,
                 choice.itemGiveAmount
+            );
+
+            Debug.Log(
+                $"아이템 획득: {choice.itemToGive.itemName} " +
+                $"x{choice.itemGiveAmount}"
             );
         }
 
-        if (!string.IsNullOrWhiteSpace(choice.itemToRemove))
+        if (choice.itemToRemove != null)
         {
             player.RemoveItem(
-                choice.itemToRemove,
+                choice.itemToRemove.itemId,
                 choice.itemRemoveAmount
+            );
+
+            Debug.Log(
+                $"아이템 제거: {choice.itemToRemove.itemName} " +
+                $"x{choice.itemRemoveAmount}"
             );
         }
 

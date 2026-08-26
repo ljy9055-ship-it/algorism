@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: "\uAD70\uBD80\uB300 \uC601\uC785"
+  m_Name: "\uAD70\uBD80\uB300 \uC601\uC7854"
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
   nodeType: 0
-  nextNode: {fileID: 11400000, guid: aa4db26fc5a32194da3e92d88c33fbde, type: 2}
+  nextNode: {fileID: 11400000, guid: 1855d7d75926a4349b3416c59f2a0cd8, type: 2}
   nodeId: 
-  storyText: "???:\uAC70\uAE30 \uB204\uAD7D\uB2C8\uAE4C?"
+  storyText: "\uB098\uB294 \uB9C8\uC744\uC758 \uCD0C\uC7A5\uC774\uB77C\uB294 \uAC83\uACFC
+    \uB9C8\uC744\uC758 \uC7AC\uAC74\uC744 \uC704\uD574 \uC8FC\uBBFC\uC744 \uBAA8\uC73C\uACE0
+    \uC788\uB2E4\uB294 \uC0AC\uC2E4\uC744 \uC54C\uB838\uB2E4."
   backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0

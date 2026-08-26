@@ -20,4 +20,5 @@ MonoBehaviour:
   attack: 20
   experienceReward: 40
   goldReward: 100
-  itemReward: "\uAD6C\uAE09\uC0C1\uC790"
+  itemReward: {fileID: 11400000, guid: 6135c9cfb9d6c1e4b97a135622f7d4b8, type: 2}
+  itemRewardAmount: 1

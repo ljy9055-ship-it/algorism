@@ -386,7 +386,7 @@ public class BattleManager : MonoBehaviour
         battleBackgroundImage.sprite = backgroundSprite;
         battleBackgroundImage.enabled = true;
     }
-    
+
 
     private void Victory()
     {
@@ -398,28 +398,45 @@ public class BattleManager : MonoBehaviour
 
         PlayerData player = PlayerData.Instance;
 
+        if (player == null)
+        {
+            Debug.LogError("PlayerData.Instance가 없습니다.");
+            return;
+        }
+
         int gainedExperience =
             currentEnemy.experienceReward;
 
         int gainedGold =
             currentEnemy.goldReward;
 
-        string gainedItem =
+        ItemData gainedItem =
             currentEnemy.itemReward;
 
-        // 보상 지급
-        player.experience += gainedExperience;
+        int gainedItemAmount =
+            Mathf.Max(1, currentEnemy.itemRewardAmount);
+
+        // 경험치 지급
+        player.AddExperience(gainedExperience);
+
+        // 골드 지급
         player.ChangeGold(gainedGold);
 
-        if (!string.IsNullOrWhiteSpace(gainedItem))
+        // 아이템 지급
+        if (gainedItem != null)
         {
-            player.AddItem(gainedItem);
+            player.AddItem(
+                gainedItem.itemId,
+                gainedItemAmount
+            );
+
+            Debug.Log(
+                $"전투 보상: {gainedItem.itemName} " +
+                $"x{gainedItemAmount}"
+            );
         }
 
-        /*
-         * PlayerData에 DefeatEnemy 함수가 실제로 있을 때만 사용한다.
-         * 함수가 없다면 이 부분은 삭제한다.
-         */
+        // 적 처치 기록
         if (!string.IsNullOrWhiteSpace(currentEnemy.enemyId))
         {
             player.DefeatEnemy(currentEnemy.enemyId);
@@ -428,11 +445,21 @@ public class BattleManager : MonoBehaviour
         battleText.text =
             $"{currentEnemy.enemyName}을 쓰러뜨렸다!";
 
+        // 결과창에 표시할 문자열
+        string gainedItemText = string.Empty;
+
+        if (gainedItem != null)
+        {
+            gainedItemText =
+                $"{gainedItem.itemName} x{gainedItemAmount}";
+        }
+
         if (resultPopup == null)
         {
-            Debug.LogError("BattleResultPopup이 연결되지 않았습니다.");
+            Debug.LogError(
+                "BattleResultPopup이 연결되지 않았습니다."
+            );
 
-            // 팝업이 없어도 전투가 멈추지 않도록 바로 종료
             FinishVictory();
             return;
         }
@@ -440,7 +467,7 @@ public class BattleManager : MonoBehaviour
         resultPopup.ShowVictoryResult(
             gainedExperience,
             gainedGold,
-            gainedItem,
+            gainedItemText,
             FinishVictory
         );
     }

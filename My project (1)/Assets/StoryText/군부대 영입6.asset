@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: "\uAD70\uBD80\uB300 \uC601\uC785"
+  m_Name: "\uAD70\uBD80\uB300 \uC601\uC7856"
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
   nodeType: 0
-  nextNode: {fileID: 11400000, guid: aa4db26fc5a32194da3e92d88c33fbde, type: 2}
+  nextNode: {fileID: 11400000, guid: eb5e5d7c00e39e043bf8cfbd6a344621, type: 2}
   nodeId: 
-  storyText: "???:\uAC70\uAE30 \uB204\uAD7D\uB2C8\uAE4C?"
+  storyText: "\uC774\uD55C:\uC88B\uC2B5\uB2C8\uB2E4. \uC798 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4."
   backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
@@ -26,6 +26,6 @@ MonoBehaviour:
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices: []
-  eventId: 
+  eventId: 00001
   runOnlyOnce: 0
   characterSprite: {fileID: 0}
