@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: "\uAD70\uBD80\uB300 \uD0D0\uD5D8\uC644\uB8CC"
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
-  nodeType: 0
+  nodeType: 1
   nextNode: {fileID: 0}
-  nodeId: 
+  nodeId: 0108
   storyText: "\uD0D0\uC0AC\uB97C \uC644\uB8CC\uD588\uB2E4"
   backgroundImage: {fileID: 21300000, guid: 65c8a0c38fc887a48a3fa5fa6a48e9cd, type: 3}
   hpChange: 0

@@ -31,6 +31,9 @@ public class StoryNode : ScriptableObject
     [Header("Node Effects")]
     public int hpChange;
     public int goldChange;
+    public int attackChange;
+    public int defenseChange;
+    public int maxHpChange;
     public ItemData itemToGive;
 
     [Header("Battle")]

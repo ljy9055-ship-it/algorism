@@ -20,10 +20,10 @@ MonoBehaviour:
   backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  itemToGive: {fileID: 0}
   enemy: {fileID: 11400000, guid: 00af120f72ee33b498e41d683551238d, type: 2}
-  victoryNode: {fileID: 0}
-  defeatNode: {fileID: 0}
+  victoryNode: {fileID: 11400000, guid: 23783717643acce49b5153ed4b7d5f8f, type: 2}
+  defeatNode: {fileID: 11400000, guid: 23783717643acce49b5153ed4b7d5f8f, type: 2}
   escapeNode: {fileID: 0}
   choices: []
   eventId: 

@@ -15,15 +15,15 @@ MonoBehaviour:
   itemGiveAmount: 1
   nodeType: 0
   nextNode: {fileID: 0}
-  nodeId: 
+  nodeId: 0112
   storyText: 
   backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  itemToGive: {fileID: 0}
   enemy: {fileID: 11400000, guid: f640bd0b00a1bdf4ab0c1df1071d9fb2, type: 2}
-  victoryNode: {fileID: 0}
-  defeatNode: {fileID: 0}
+  victoryNode: {fileID: 11400000, guid: eb5e5d7c00e39e043bf8cfbd6a344621, type: 2}
+  defeatNode: {fileID: 11400000, guid: eb5e5d7c00e39e043bf8cfbd6a344621, type: 2}
   escapeNode: {fileID: 0}
   choices: []
   eventId: 

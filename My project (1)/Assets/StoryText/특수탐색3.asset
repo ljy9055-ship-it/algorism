@@ -15,12 +15,12 @@ MonoBehaviour:
   itemGiveAmount: 1
   nodeType: 0
   nextNode: {fileID: 0}
-  nodeId: 
+  nodeId: 0704
   storyText: 
   backgroundImage: {fileID: 0}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  itemToGive: {fileID: 0}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}

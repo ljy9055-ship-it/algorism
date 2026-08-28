@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
+  m_Name: "\uD3D0\uBCD1\uC6D0 \uC601\uC7852"
+  m_EditorClassIdentifier: 
+  itemGiveAmount: 1
+  nodeType: 0
+  nextNode: {fileID: 11400000, guid: 5b71d21199566fb499b2f1f2cfd555d2, type: 2}
+  nodeId: 0203
+  storyText: "\uB204\uAD6C\uB0D0?"
+  backgroundImage: {fileID: 21300000, guid: e15a6225b6b26394e91d9f016525ea1a, type: 3}
+  hpChange: 0
+  goldChange: 0
+  attackChange: 0
+  defenseChange: 0
+  maxHpChange: 0
+  itemToGive: {fileID: 0}
+  enemy: {fileID: 0}
+  victoryNode: {fileID: 0}
+  defeatNode: {fileID: 0}
+  escapeNode: {fileID: 0}
+  choices: []
+  eventId: 
+  runOnlyOnce: 0
+  characterSprite: {fileID: 0}

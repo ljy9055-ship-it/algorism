@@ -15,9 +15,9 @@ MonoBehaviour:
   itemGiveAmount: 1
   nodeType: 0
   nextNode: {fileID: 11400000, guid: 98c59c453c09b034ca85728b2546f49a, type: 2}
-  nodeId: 
+  nodeId: 0114
   storyText: "\uB204\uAD6C\uB0D0?"
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: 65c8a0c38fc887a48a3fa5fa6a48e9cd, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: {fileID: 0}

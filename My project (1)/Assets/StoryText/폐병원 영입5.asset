@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
+  m_Name: "\uD3D0\uBCD1\uC6D0 \uC601\uC7855"
+  m_EditorClassIdentifier: 
+  itemGiveAmount: 1
+  nodeType: 1
+  nextNode: {fileID: 0}
+  nodeId: 0206
+  storyText: "\uB3C5\uD0C0:\uADF8\uB807\uB2E4\uBA74 \uC800\uB97C \uB9C8\uC744\uC758
+    \uC77C\uC6D0\uC73C\uB85C \uBC1B\uC544\uC8FC\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\uCE58\uB8CC\uC5D0
+    \uB3C4\uC6C0\uC744 \uC904 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  backgroundImage: {fileID: 21300000, guid: e15a6225b6b26394e91d9f016525ea1a, type: 3}
+  hpChange: 0
+  goldChange: 0
+  itemToGive: {fileID: 0}
+  enemy: {fileID: 0}
+  victoryNode: {fileID: 0}
+  defeatNode: {fileID: 0}
+  escapeNode: {fileID: 0}
+  choices:
+  - buttonText: "\uC218\uB77D\uD55C\uB2E4"
+    nextNode: {fileID: 11400000, guid: 393cc7aa68c20ab4798eecc873a9a344, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: {fileID: 0}
+    requiredItemCount: 0
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 0
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 0
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    requiredCount: 0
+    hideAfterCountEventId: 
+    hideAfterCount: 0
+    hideAfterEventId: 
+  - buttonText: "\uAC70\uC808\uD55C\uB2E4"
+    nextNode: {fileID: 11400000, guid: 3803de9b2e1300e46bfb6d00323e0379, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: {fileID: 0}
+    requiredItemCount: 0
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 0
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 0
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    requiredCount: 0
+    hideAfterCountEventId: 
+    hideAfterCount: 0
+    hideAfterEventId: 
+  eventId: 
+  runOnlyOnce: 0
+  characterSprite: {fileID: 0}

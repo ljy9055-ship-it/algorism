@@ -15,10 +15,10 @@ MonoBehaviour:
   itemGiveAmount: 1
   nodeType: 0
   nextNode: {fileID: 11400000, guid: dfba0a6ca030449418bf8ebdf5dc0d1b, type: 2}
-  nodeId: 
+  nodeId: 0115
   storyText: "\uC774\uD55C:\uC800\uB294 \uC774\uD55C\uC774\uB77C\uACE0 \uD569\uB2C8\uB2E4.
     \uB2F9\uC2E0\uC740 \uB204\uAD6C\uC2ED\uB2C8\uAE4C?"
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: 65c8a0c38fc887a48a3fa5fa6a48e9cd, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: {fileID: 0}
@@ -29,4 +29,4 @@ MonoBehaviour:
   choices: []
   eventId: 
   runOnlyOnce: 0
-  characterSprite: {fileID: 0}
+  characterSprite: {fileID: 21300000, guid: 1482ef5b0665d074fb7a8476c1e297cf, type: 3}

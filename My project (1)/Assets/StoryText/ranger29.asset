@@ -20,7 +20,10 @@ MonoBehaviour:
   backgroundImage: {fileID: 21300000, guid: 15f51d61130501947809b9c538216a66, type: 3}
   hpChange: 0
   goldChange: 0
-  itemToGive: "\uAD70\uBD80\uB300 \uC5F4\uC1E0"
+  attackChange: 0
+  defenseChange: 0
+  maxHpChange: 0
+  itemToGive: {fileID: 11400000, guid: fc74a63884fb4944bb57fbd5504c5c59, type: 2}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}

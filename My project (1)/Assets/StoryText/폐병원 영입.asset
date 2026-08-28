@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
   nodeType: 0
-  nextNode: {fileID: 0}
-  nodeId: 
-  storyText: 
-  backgroundImage: {fileID: 0}
+  nextNode: {fileID: 11400000, guid: b207128813b3fe9498752647eab49fb9, type: 2}
+  nodeId: 0202
+  storyText: "???:\uAC70\uAE30 \uB204\uAD7D\uB2C8\uAE4C?"
+  backgroundImage: {fileID: 21300000, guid: e15a6225b6b26394e91d9f016525ea1a, type: 3}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  attackChange: 0
+  defenseChange: 0
+  maxHpChange: 0
+  itemToGive: {fileID: 0}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}

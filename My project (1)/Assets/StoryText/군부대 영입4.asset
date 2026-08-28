@@ -15,11 +15,11 @@ MonoBehaviour:
   itemGiveAmount: 1
   nodeType: 0
   nextNode: {fileID: 11400000, guid: 1855d7d75926a4349b3416c59f2a0cd8, type: 2}
-  nodeId: 
+  nodeId: 0104
   storyText: "\uB098\uB294 \uB9C8\uC744\uC758 \uCD0C\uC7A5\uC774\uB77C\uB294 \uAC83\uACFC
     \uB9C8\uC744\uC758 \uC7AC\uAC74\uC744 \uC704\uD574 \uC8FC\uBBFC\uC744 \uBAA8\uC73C\uACE0
     \uC788\uB2E4\uB294 \uC0AC\uC2E4\uC744 \uC54C\uB838\uB2E4."
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: 65c8a0c38fc887a48a3fa5fa6a48e9cd, type: 3}
   hpChange: 0
   goldChange: 0
   itemToGive: {fileID: 0}

@@ -20,33 +20,38 @@ MonoBehaviour:
   backgroundImage: {fileID: 21300000, guid: 15f51d61130501947809b9c538216a66, type: 3}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  attackChange: 0
+  defenseChange: 0
+  maxHpChange: 0
+  itemToGive: {fileID: 0}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices:
   - buttonText: "\uAC74\uCD95"
-    nextNode: {fileID: 0}
+    nextNode: {fileID: 11400000, guid: 44c24e60f2a0aee49b05455f0f29766d, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 1
-    itemRemoveAmount: 1
+    hideAfterEventId: 
   - buttonText: "\uC815\uCC30"
     nextNode: {fileID: 11400000, guid: a6d6161574254204fa949de49b47a158, type: 2}
     useRandomNextNode: 0
@@ -54,86 +59,163 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 1
     completeEventId: 0620
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 1
-    itemRemoveAmount: 1
+    hideAfterEventId: 
   - buttonText: "\uC815\uCC30"
     nextNode: {fileID: 11400000, guid: 4c3ae04eef483d643adb4474d5a552d0, type: 2}
     useRandomNextNode: 1
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 0620
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 1
-    itemRemoveAmount: 1
+    hideAfterEventId: 
   - buttonText: "\uD0D0\uC0C9"
     nextNode: {fileID: 11400000, guid: 2a9c1a7cf2177b34b9455c43953a28ea, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 0620
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 1
-    itemRemoveAmount: 1
+    hideAfterEventId: 
   - buttonText: "\uD2B9\uC218\uD0D0\uC0C9"
     nextNode: {fileID: 11400000, guid: 31cb3824ddde5134483299d781bfae56, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 0620
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
+    hideAfterEventId: 
+  - buttonText: "\uD6C8\uB828\uC7A5(50\uACE8\uB4DC)"
+    nextNode: {fileID: 11400000, guid: 04c0275a93a1d7a4d975d9f03866b034, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
+    requiredGold: 50
+    requiredEventId: 0308
+    hpChange: 0
+    goldChange: -50
+    itemToGive: {fileID: 0}
     itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
     itemRemoveAmount: 1
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    requiredCount: 0
+    hideAfterCountEventId: 
+    hideAfterCount: 0
+    hideAfterEventId: 
+  - buttonText: "\uBCD1\uC6D0(50\uACE8\uB4DC)"
+    nextNode: {fileID: 11400000, guid: 93f6a82d8eb729e429355a6a9857b258, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
+    requiredGold: 50
+    requiredEventId: 0309
+    hpChange: 0
+    goldChange: -50
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    requiredCount: 0
+    hideAfterCountEventId: 
+    hideAfterCount: 0
+    hideAfterEventId: 
+  - buttonText: "\uC5F0\uAD6C\uD55C\uB2E4"
+    nextNode: {fileID: 11400000, guid: 57662cb54c4355644a5a1aa50ebf21a4, type: 2}
+    useRandomNextNode: 0
+    randomNextNodes: []
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
+    requiredGold: 50
+    requiredEventId: 0309
+    hpChange: 0
+    goldChange: -50
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 1
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 1
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    requiredCount: 0
+    hideAfterCountEventId: 
+    hideAfterCount: 0
+    hideAfterEventId: 
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}

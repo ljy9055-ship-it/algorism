@@ -13,19 +13,44 @@ MonoBehaviour:
   m_Name: "\uD0D0\uC0C9(\uD3D0\uBCD1\uC6D0"
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
-  nodeType: 0
+  nodeType: 1
   nextNode: {fileID: 0}
-  nodeId: 
+  nodeId: 0210
   storyText: "\uC8FC\uBCC0\uC740 \uC870\uC6A9\uD558\uB2E4"
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: e15a6225b6b26394e91d9f016525ea1a, type: 3}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  itemToGive: {fileID: 0}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
-  choices: []
+  choices:
+  - buttonText: "\uD0D0\uC0C9\uD55C\uB2E4"
+    nextNode: {fileID: 11400000, guid: aee8ce05048ce164fbe2c3b3a487888a, type: 2}
+    useRandomNextNode: 1
+    randomNextNodes:
+    - {fileID: 11400000, guid: d7058b48a70b51845971179799f1dbc3, type: 2}
+    - {fileID: 11400000, guid: e7182940e4f088f44bd2066468850865, type: 2}
+    requiredItem: {fileID: 0}
+    requiredItemCount: 0
+    requiredGold: 0
+    requiredEventId: 
+    hpChange: 0
+    goldChange: 0
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 0
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 0
+    equipmentToGive: {fileID: 0}
+    equipImmediately: 0
+    hideAfterComplete: 0
+    completeEventId: 
+    requiredCountEventId: 
+    requiredCount: 0
+    hideAfterCountEventId: 
+    hideAfterCount: 0
+    hideAfterEventId: 
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}

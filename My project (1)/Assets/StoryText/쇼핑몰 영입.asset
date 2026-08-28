@@ -17,10 +17,10 @@ MonoBehaviour:
   nextNode: {fileID: 0}
   nodeId: 
   storyText: 
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 21300000, guid: 9d8e8670d95c6dd4ca3dd09c3f31b637, type: 3}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  itemToGive: {fileID: 0}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}

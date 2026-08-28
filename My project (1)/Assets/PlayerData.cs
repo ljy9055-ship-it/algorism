@@ -430,4 +430,43 @@ public class PlayerData : MonoBehaviour
 
         inventory[itemId] = amount;
     }
+    public void ChangeAttack(int amount)
+    {
+        attack += amount;
+
+        // 공격력이 음수가 되지 않도록
+        attack = Mathf.Max(0, attack);
+
+        Debug.Log($"기본 공격력 변경: {amount}, 현재 공격력: {attack}");
+    }
+
+    public void ChangeDefense(int amount)
+    {
+        defense += amount;
+
+        // 방어력이 음수가 되지 않도록
+        defense = Mathf.Max(0, defense);
+
+        Debug.Log($"기본 방어력 변경: {amount}, 현재 방어력: {defense}");
+    }
+
+    public void ChangeMaxHp(int amount)
+    {
+        maxHp += amount;
+
+        // 최대 체력이 최소 1은 유지되도록
+        maxHp = Mathf.Max(1, maxHp);
+
+        // 현재 HP가 새로운 최대 HP보다 높아지지 않도록
+        hp = Mathf.Clamp(
+            hp,
+            0,
+            MaxHp
+        );
+
+        Debug.Log(
+            $"기본 최대 체력 변경: {amount}, " +
+            $"현재 최대 체력: {MaxHp}"
+        );
+    }
 }

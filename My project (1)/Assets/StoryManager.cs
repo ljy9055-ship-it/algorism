@@ -266,6 +266,20 @@ public class StoryManager : MonoBehaviour
         {
             player.ChangeGold(node.goldChange);
         }
+        if (node.attackChange != 0)
+        {
+            player.ChangeAttack(node.attackChange);
+        }
+
+        if (node.defenseChange != 0)
+        {
+            player.ChangeDefense(node.defenseChange);
+        }
+
+        if (node.maxHpChange != 0)
+        {
+            player.ChangeMaxHp(node.maxHpChange);
+        }
 
         if (node.itemToGive != null)
         {

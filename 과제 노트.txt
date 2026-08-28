@@ -1,0 +1,5 @@
+Light intensity 1->2
+조명이 강해짐/그림자가 짙어짐
+SphereMaterial 적용
+Base color 변환/ 흰색/빨간색/구체가 흰색에서 빨간색으로 변함
+Base color 변환/ 파란색/빨간색/구체가 빨간색에서 파란색으로 변함

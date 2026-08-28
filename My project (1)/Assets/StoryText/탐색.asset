@@ -20,75 +20,81 @@ MonoBehaviour:
   backgroundImage: {fileID: 21300000, guid: 15f51d61130501947809b9c538216a66, type: 3}
   hpChange: 0
   goldChange: 0
-  itemToGive: 
+  itemToGive: {fileID: 0}
   enemy: {fileID: 0}
   victoryNode: {fileID: 0}
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices:
-  - buttonText: 
-    nextNode: {fileID: 0}
+  - buttonText: "\uAD70\uBD80\uB300\uB85C \uAC04\uB2E4"
+    nextNode: {fileID: 11400000, guid: ecdc56e104c112546b1caab23e95d56e, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 0
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 0
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 0
-    itemRemoveAmount: 0
-  - buttonText: 
-    nextNode: {fileID: 0}
+    hideAfterEventId: 
+  - buttonText: "\uC1FC\uD551\uBAB0\uB85C \uAC04\uB2E4"
+    nextNode: {fileID: 11400000, guid: 82f3e53c2e900e84cb2f9b39b6a90ba7, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 0
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 0
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 0
-    itemRemoveAmount: 0
-  - buttonText: 
-    nextNode: {fileID: 0}
+    hideAfterEventId: 
+  - buttonText: "\uD3D0\uBCD1\uC6D0\uC73C\uB85C \uAC04\uB2E4"
+    nextNode: {fileID: 11400000, guid: eed74133b13c2204ebdb2b9fccd40be8, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: 
+    requiredItem: {fileID: 0}
+    requiredItemCount: 1
     requiredGold: 0
     requiredEventId: 
     hpChange: 0
     goldChange: 0
-    itemToGive: 
-    itemToRemove: 
+    itemToGive: {fileID: 0}
+    itemGiveAmount: 0
+    itemToRemove: {fileID: 0}
+    itemRemoveAmount: 0
     equipmentToGive: {fileID: 0}
     equipImmediately: 0
     hideAfterComplete: 0
     completeEventId: 
     requiredCountEventId: 
-    hideAfterCountEventId: 
     requiredCount: 0
+    hideAfterCountEventId: 
     hideAfterCount: 0
-    itemGiveAmount: 0
-    itemRemoveAmount: 0
+    hideAfterEventId: 
   eventId: 
   runOnlyOnce: 0
   characterSprite: {fileID: 0}
