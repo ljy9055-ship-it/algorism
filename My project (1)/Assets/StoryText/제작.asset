@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fdc67350ab9bef45a581e51a2a82e80, type: 3}
-  m_Name: "\uC804\uD22C(\uC1FC\uD551\uBAB0"
+  m_Name: "\uC81C\uC791"
   m_EditorClassIdentifier: 
   itemGiveAmount: 1
   nodeType: 1
   nextNode: {fileID: 0}
-  nodeId: 
-  storyText: "\uC8FC\uBCC0\uC5D0\uC11C \uBD80\uC2A4\uB7ED\uAC70\uB9AC\uB294 \uC18C\uB9AC\uAC00
-    \uB4E4\uB9B0\uB2E4"
-  backgroundImage: {fileID: 21300000, guid: 9d8e8670d95c6dd4ca3dd09c3f31b637, type: 3}
+  nodeId: 000000
+  storyText: "\uBB34\uC5C7\uC744 \uB9CC\uB4E4\uAE4C?"
+  backgroundImage: {fileID: 21300000, guid: 15f51d61130501947809b9c538216a66, type: 3}
   hpChange: 0
   goldChange: 0
   attackChange: 0
@@ -30,8 +29,8 @@ MonoBehaviour:
   defeatNode: {fileID: 0}
   escapeNode: {fileID: 0}
   choices:
-  - buttonText: 
-    nextNode: {fileID: 0}
+  - buttonText: "\uB3CC\uC544\uAC04\uB2E4"
+    nextNode: {fileID: 11400000, guid: eb5e5d7c00e39e043bf8cfbd6a344621, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
     requiredItem: {fileID: 0}
@@ -53,24 +52,24 @@ MonoBehaviour:
     hideAfterCountEventId: 
     hideAfterCount: 0
     hideAfterEventId: 
-  - buttonText: 
-    nextNode: {fileID: 0}
+  - buttonText: "\uAD8C\uCD1D(\uCD1D\uAE30\uBD80\uD4882, 100\uACE8\uB4DC)"
+    nextNode: {fileID: 11400000, guid: eb5e5d7c00e39e043bf8cfbd6a344621, type: 2}
     useRandomNextNode: 0
     randomNextNodes: []
-    requiredItem: {fileID: 0}
-    requiredItemCount: 0
+    requiredItem: {fileID: 11400000, guid: 02e52597ac94481478bd10734fcac007, type: 2}
+    requiredItemCount: 2
     requiredGold: 0
-    requiredEventId: 
+    requiredEventId: 0306
     hpChange: 0
-    goldChange: 0
+    goldChange: -100
     itemToGive: {fileID: 0}
     itemGiveAmount: 0
-    itemToRemove: {fileID: 0}
-    itemRemoveAmount: 0
-    equipmentToGive: {fileID: 0}
-    equipImmediately: 0
-    hideAfterComplete: 0
-    completeEventId: 
+    itemToRemove: {fileID: 11400000, guid: 02e52597ac94481478bd10734fcac007, type: 2}
+    itemRemoveAmount: 2
+    equipmentToGive: {fileID: 11400000, guid: 628ed7d3103c44b4393267a6ca22c515, type: 2}
+    equipImmediately: 1
+    hideAfterComplete: 1
+    completeEventId: "\uAD8C\uCD1D"
     requiredCountEventId: 
     requiredCount: 0
     hideAfterCountEventId: 
