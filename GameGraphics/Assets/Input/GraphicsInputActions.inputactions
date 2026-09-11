@@ -1,0 +1,68 @@
+{
+    "version": 1,
+    "name": "GraphicsInputActions",
+    "maps": [
+        {
+            "name": "GamePlay",
+            "id": "a52163f0-a952-4ecd-98ae-0f5fd36c2a9c",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "7eba834e-bb7b-4368-ba49-4a54bd0c8455",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "clickAction",
+                    "type": "Button",
+                    "id": "f6b5b4e8-6c9b-4d4a-ac4c-c51c8d71022e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d66cfaa1-2ea9-4a3e-a469-8e0f310aa0ff",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7667e1ba-21cd-4dc6-877c-a8e8f74bf48f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea6f728a-f7c0-4ad8-a53e-87596246b0b8",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "clickAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
