@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "KiLPkzUZ1lQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\algorism\\GAMEQUEST\\GAMEQUEST.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\litedb\\5.0.21\\litedb.5.0.21.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

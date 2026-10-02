@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "zmGANrQuXagMKkUNENQM0SHN83BPzxG76olF0BBRnkA=",
+  "Source": "AuthServerLab",
+  "BasePath": "_content/AuthServerLab",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\bin\Debug\net8.0\AuthClientLab.exe
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\bin\Debug\net8.0\AuthClientLab.deps.json
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\bin\Debug\net8.0\AuthClientLab.runtimeconfig.json
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\bin\Debug\net8.0\AuthClientLab.dll
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\bin\Debug\net8.0\AuthClientLab.pdb
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.AssemblyInfo.cs
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.sourcelink.json
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.dll
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\refint\AuthClientLab.dll
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.pdb
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\AuthClientLab.genruntimeconfig.cache
+C:\Users\Admin\Desktop\algorism\AuthClientLab\AuthClientLab\obj\Debug\net8.0\ref\AuthClientLab.dll
