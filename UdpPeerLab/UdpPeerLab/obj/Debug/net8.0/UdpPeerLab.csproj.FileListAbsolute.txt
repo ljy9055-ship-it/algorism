@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\bin\Debug\net8.0\UdpPeerLab.exe
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\bin\Debug\net8.0\UdpPeerLab.deps.json
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\bin\Debug\net8.0\UdpPeerLab.runtimeconfig.json
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\bin\Debug\net8.0\UdpPeerLab.dll
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\bin\Debug\net8.0\UdpPeerLab.pdb
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.AssemblyInfo.cs
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.sourcelink.json
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.dll
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\refint\UdpPeerLab.dll
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.pdb
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\UdpPeerLab.genruntimeconfig.cache
+C:\Users\Admin\Desktop\algorism\UdpPeerLab\UdpPeerLab\obj\Debug\net8.0\ref\UdpPeerLab.dll
