@@ -8,22 +8,21 @@
 |---|---|
 | 운영체제 | Windows (실습 화면 기준) |
 | IDE | Visual Studio Code |
-| .NET SDK | **제출 전 `dotnet --version` 출력값 기입** |
-| Unity Editor | **6000.6.6f1** (제공된 Unity 실행 로그 기준) |
-| NGO / Unity Transport 패키지 | **과제 A 구현 후 버전 기입** |
+| .NET SDK | 9.0.203 |
+| Unity Editor | 6000.6.6f1 |
+| NGO / Unity Transport 패키지 | 6.6.0 |
 
 ## 2. 프로젝트 위치
 
 ```text
 NetworkAssignment/
-├── gamenetwork/        # 과제 A: Unity 프로젝트 (실제 폴더명 확인 후 수정)
-├── UdpPeer/            # 과제 B: C# 콘솔 프로젝트 (별도 준비)
+├── gamenetwork/        
+├── UdpPeer/            
 ├── README.md
 ├── DESIGN.md
 └── TEST_REPORT.md
 ```
 
-**주의:** 이 문서 세 개에는 실행 코드가 포함되지 않습니다. 실제 Unity 프로젝트와 `UdpPeer` 폴더를 같은 제출 묶음에 포함해야 합니다. Unity 프로젝트의 실제 폴더명은 제공된 실행 로그에서 `gamenetwork`로 보였으나 제출 전 직접 확인하세요. UDP에는 `.csproj`, `Program.cs`가 필요합니다. Unity에는 `Assets/`, `Packages/`, `ProjectSettings/` 등이 필요합니다. 빌드 실행 파일을 포함한다면 `.exe`뿐 아니라 `_Data` 폴더 등 빌드 구성 전체를 함께 포함하세요.
 
 ## 3. UDP 피어 실행
 
@@ -76,8 +75,8 @@ NetworkAssignment/
 
 ### 환경과 게임 구성
 
-- Unity Editor: **6000.6.6f1** (실행 로그에서 확인). NGO 및 Unity Transport의 **정확한 설치 버전은 제출 전** Unity `Window → Package Manager → In Project` 또는 `Packages/manifest.json`에서 확인하여 기입: NGO `________`, Unity Transport `________`.
-- Unity 프로젝트: `gamenetwork/` (실제 폴더명 확인 후 경로 수정), 시작 씬: `CoinGameScene` (실제 씬 파일명 확인 후 수정).
+- Unity Editor: 6000.6.6f1
+- Unity 프로젝트: `gamenetwork/`, 시작 씬: `Portporio`
 - 게임은 같은 PC의 **Unity Editor = Host**, Windows 빌드 실행 파일 = **Client** 방식으로 확인했습니다.
 - 기본 접속 주소 `127.0.0.1`, 포트 `7777`. 게임 시작 화면의 주소·포트 입력란에서 변경할 수 있습니다. Host와 Client는 같은 포트를 입력합니다.
 - `Player` 프리팹은 `NetworkObject`, `CharacterController`, `PlayerMovement`, 소유자 권한 `NetworkTransform`(또는 이를 대신하는 `OwnerNetworkTransform`)을 사용합니다.
@@ -120,6 +119,5 @@ F2 시험 전에는 멀리 있는 미획득 코인이 필요하고, F3 전에는
 - Unity의 `Edit → Project Settings → Player → Active Input Handling`은 **Both**로 설정해 레거시 `Input.GetAxisRaw`를 사용할 수 있게 했습니다.
 - 과거 Editor와 빌드의 프리팹 버전이 달라 `NetworkBehaviour index ... out of bounds`가 발생했습니다. 동일한 프로젝트 상태로 **재빌드**해 해결했습니다.
 - Unity URP 후처리 셰이더 관련 경고가 실행 로그에 나타난 적 있습니다. 게임 기능에 미치는 영향은 별도 계측하지 않았습니다.
-- UDP 피어 재시작 후 이전 좌표·순서 번호 복구나 확정 전달/자동 재전송은 제공하지 않습니다(과제 필수 아님).
-- UDP 수신 측 처리 시간은 따로 측정하지 않았습니다. 1ms 대기 조건은 약 16초로만 관찰됐으며 정확한 원본 숫자는 미확인입니다.
-- **제출 전 기입:** .NET SDK 버전(`dotnet --version`), NGO/Unity Transport 패키지 버전, Unity 실제 프로젝트·씬 이름, 사용한 강의자료/코드의 상세 출처.
+- UDP 피어 재시작 후 이전 좌표·순서 번호 복구나 확정 전달/자동 재전송은 제공하지 않습니다.
+- UDP 수신 측 처리 시간은 따로 측정하지 않았습니다.
