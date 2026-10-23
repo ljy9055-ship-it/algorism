@@ -15,7 +15,7 @@ MonoBehaviour:
   itemGiveAmount: 1
   nodeType: 1
   nextNode: {fileID: 0}
-  nodeId: 
+  nodeId: 012121
   storyText: "\uC8FC\uBCC0\uC5D0\uC11C \uBD80\uC2A4\uB7ED\uAC70\uB9AC\uB294 \uC18C\uB9AC\uAC00
     \uB4E4\uB9B0\uB2E4"
   backgroundImage: {fileID: 21300000, guid: 9d8e8670d95c6dd4ca3dd09c3f31b637, type: 3}
