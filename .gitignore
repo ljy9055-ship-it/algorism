@@ -37,6 +37,14 @@ NetworkAssignment/gamenetwork/Logs/
 NetworkAssignment/gamenetwork/UserSettings/
 NetworkAssignment/gamenetwork/Build/
 NetworkAssignment/gamenetwork/Builds/
+GamePlatform/Library/
+GamePlatform/Temp/
+GamePlatform/Obj/
+GamePlatform/Logs/
+GamePlatform/UserSettings/
+GamePlatform/Build/
+GamePlatform/Builds/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
