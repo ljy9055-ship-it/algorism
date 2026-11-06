@@ -1,0 +1,6 @@
+ACS@AddressablesContentState?IdÇKhttp://schemas.datacontract.org/2004/07/UnityEditor.AddressableAssets.Build	i)http://www.w3.org/2001/XMLSchema-instance	z3http://schemas.microsoft.com/2003/10/Serialization/@cachedBundles?Idà?Sizeà@CachedBundleState?Idà@bundleFileId?Idàòt{UnityEngine.AddressableAssets.Addressables.RuntimePath}\StandaloneWindows64\e93a0838ad2f3dbc286f9c595c1f19c0.bundle@data.nilÜ@CachedBundleState?Idà@bundleFileId?Idàò°{UnityEngine.AddressableAssets.Addressables.RuntimePath}\StandaloneWindows64\3f61fef64f85eeb9ee2ad4d7cb0f4755_monoscripts_682bdf5e797ee220d1a9a0535d5a59fa.bundle@data.typeòa:AssetBundleRequestOptions?Idà	aXhttp://schemas.datacontract.org/2004/07/UnityEngine.ResourceManagement.ResourceProviders^AssetLoadModeôRequestedAssetAndDependencies^
+BundleName?Idàô,3f61fef64f85eeb9ee2ad4d7cb0f4755_monoscripts^
+BundleSizeã¿^CacheProbeModeôCachedVersions^ChunkedTransferÖ^"ClearOtherCachedVersionsWhenLoadedÖ^CrcçA–ù`^Hash?Idà	ô 682bdf5e797ee220d1a9a0535d5a59fa^RedirectLimitâˇ^
+RetryCountÅ^TimeoutÅ^UseCrcForCachedBundleá^!UseUnityWebRequestForLocalBundlesÖ@cachedInfos?Idà
+?SizeÄ@editorVersion?Idàô
+6000.7.0b6@playerVersion?Idàô0.1.0@remoteCatalogLoadPath?Idà@typeTreeHashes?Idà?SizeÄ	a3http://schemas.datacontract.org/2004/07/UnityEngine
