@@ -9,12 +9,18 @@ public sealed class PlatformMover : MonoBehaviour
 
     private void OnEnable()
     {
-        move.action.Enable();
+        if (move != null && move.action != null)
+        {
+            move.action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        move.action.Disable();
+        if (move != null && move.action != null)
+        {
+            move.action.Disable();
+        }
     }
 
     private void Update()

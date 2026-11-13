@@ -221,12 +221,6 @@ MonoBehaviour:
   acesPreset:
     m_OverrideState: 1
     m_Value: 3
-  agxContrast:
-    m_OverrideState: 1
-    m_Value: 1.193
-  agxMidGrey:
-    m_OverrideState: 1
-    m_Value: 0.18
   hueShiftAmount:
     m_OverrideState: 1
     m_Value: 0
@@ -474,10 +468,6 @@ MonoBehaviour:
   - {fileID: -6288072647309666549}
   - {fileID: 7518938298396184218}
   - {fileID: -1410297666881709256}
-  - {fileID: 4838392424757545128}
-  - {fileID: 8762161012048796704}
-  - {fileID: 3305366784596044513}
-  - {fileID: 6583062597899285866}
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -542,7 +532,7 @@ MonoBehaviour:
   resolution:
     m_OverrideState: 1
     m_Value: 4
-  chromaticAberrationIntensity:
+  chromaticAbberationIntensity:
     m_OverrideState: 1
     m_Value: 0.5
 --- !u!114 &1052315754049611418

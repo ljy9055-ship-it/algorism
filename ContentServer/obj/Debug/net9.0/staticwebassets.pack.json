@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\algorism\\ContentServer\\wwwroot\\StandaloneWindows64\\catalog_0.1.0.bin",
+      "PackagePath": "staticwebassets\\StandaloneWindows64\\catalog_0.1.0.bin"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\algorism\\ContentServer\\wwwroot\\StandaloneWindows64\\catalog_0.1.0.hash",
+      "PackagePath": "staticwebassets\\StandaloneWindows64\\catalog_0.1.0.hash"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\algorism\\ContentServer\\wwwroot\\StandaloneWindows64\\d932afec538e186bbf7e325050b31eef.bundle",
+      "PackagePath": "staticwebassets\\StandaloneWindows64\\d932afec538e186bbf7e325050b31eef.bundle"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.ContentServer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.ContentServer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.ContentServer.props",
+      "PackagePath": "build\\ContentServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.ContentServer.props",
+      "PackagePath": "buildMultiTargeting\\ContentServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.ContentServer.props",
+      "PackagePath": "buildTransitive\\ContentServer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -62,13 +62,13 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: c372463f6f9e1654799c6776e4f3fdef
   m_RemoteCatalogLoadPath:
-    m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+    m_Id: 5dc8c486b9af6f24c885d422890da6bc
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
-  m_BuildAddressablesWithPlayerBuild: 0
+  m_BuildAddressablesWithPlayerBuild: 2
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: ae7996a3455c81544b447eed0f48b3a8, type: 2}
@@ -90,6 +90,20 @@ MonoBehaviour:
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 5dc8c486b9af6f24c885d422890da6bc
         m_Value: <undefined>
+      - m_Id: c372463f6f9e1654799c6776e4f3fdef
+        m_Value: 'ServerData/[BuildTarget]'
+    - m_InheritedParent: 
+      m_Id: d96f122ad05f9214185776ae6e590d89
+      m_ProfileName: RemoteTest
+      m_Values:
+      - m_Id: 13a133dbf980dac478dd34820d074068
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 3b86558ba1d4ea7499e2ca65b0543c6a
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 4428875f61172214fb124a3cdbb80bd1
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 5dc8c486b9af6f24c885d422890da6bc
+        m_Value: 'https://localhost:7043/[BuildTarget]'
       - m_Id: c372463f6f9e1654799c6776e4f3fdef
         m_Value: 'ServerData/[BuildTarget]'
     m_ProfileEntryNames:

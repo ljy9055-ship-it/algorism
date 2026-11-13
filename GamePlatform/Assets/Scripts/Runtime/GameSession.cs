@@ -68,10 +68,13 @@ public sealed class GameSession : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
+        best = PlayerPrefs.GetInt(BestKey, 0);
         SetStage(coins);
     }
+
 
     private void Update()
     {
@@ -206,5 +209,11 @@ public sealed class GameSession : MonoBehaviour
         // 0.2초가 남았을 때 0으로 보이지 않도록 올림해서 1초로 표시합니다.
         hud.text = $"Score: {Score}  Time: {Mathf.CeilToInt(round.Remaining)}";
         resultText.text = $"Score: {Score}";
+
+        if (bestText != null)
+        {
+            bestText.text = $"Best Score: {best}";
+        }
+
     }
 }
