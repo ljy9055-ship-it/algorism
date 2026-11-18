@@ -1,1 +1,2 @@
-과제 파일은 'NetworkAssignment'에 있습니다
+과제 파일은 'GamePlatform'에 있습니다
+빌드 파일은 'Build'폴더에 있습니다

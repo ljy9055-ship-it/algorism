@@ -25,7 +25,10 @@ public sealed class GameSession : MonoBehaviour
     private bool showingResult;
     private bool busy;
     private bool paused;
-
+    private int lastHudScore = int.MinValue;
+    private int lastHudSeconds = int.MinValue;
+    private int lastResultScore = int.MinValue;
+    private int lastBestScore = int.MinValue;
     public int Score => round.Score;
     public bool IsPlaying => playing;
     public bool CanMove => playing && !paused;
@@ -116,7 +119,6 @@ public sealed class GameSession : MonoBehaviour
 
     public bool TryCollect(int id)
     {
-        // 진행 중이 아니면 수집을 요청하지 않고, 진행 중이어도 최종 승인 여부는 CoinRound가 판단합니다.
         if (!CanMove || !round.TryCollect(id))
         {
             return false;
@@ -126,6 +128,8 @@ public sealed class GameSession : MonoBehaviour
         {
             collectAudio.Play();
         }
+
+        RefreshUi();
 
         return true;
     }
@@ -202,18 +206,62 @@ public sealed class GameSession : MonoBehaviour
 
     private void RefreshUi()
     {
-        menuPanel.SetActive(!playing && !showingResult);
-        hudPanel.SetActive(playing);
-        resultPanel.SetActive(showingResult);
-        startButton.interactable = IsReady;
-        // 0.2초가 남았을 때 0으로 보이지 않도록 올림해서 1초로 표시합니다.
-        hud.text = $"Score: {Score}  Time: {Mathf.CeilToInt(round.Remaining)}";
-        resultText.text = $"Score: {Score}";
+        bool showMenu = !playing && !showingResult;
 
-        if (bestText != null)
+        // 패널 상태가 달라졌을 때만 변경
+        if (menuPanel.activeSelf != showMenu)
         {
-            bestText.text = $"Best Score: {best}";
+            menuPanel.SetActive(showMenu);
         }
 
+        if (hudPanel.activeSelf != playing)
+        {
+            hudPanel.SetActive(playing);
+        }
+
+        if (resultPanel.activeSelf != showingResult)
+        {
+            resultPanel.SetActive(showingResult);
+        }
+
+        // 시작 버튼 상태
+        bool canStart = IsReady;
+
+        if (startButton.interactable != canStart)
+        {
+            startButton.interactable = canStart;
+        }
+
+        // 현재 점수 및 시간
+        int currentScore = Score;
+        int currentSeconds = Mathf.CeilToInt(round.Remaining);
+
+        // 표시되는 점수 또는 시간이 달라졌을 때만 갱신
+        if (lastHudScore != currentScore ||
+            lastHudSeconds != currentSeconds)
+        {
+            hud.SetText(
+                "Score: {0}  Time: {1}",
+                (float)currentScore,
+                (float)currentSeconds
+            );
+
+            lastHudScore = currentScore;
+            lastHudSeconds = currentSeconds;
+        }
+
+        // 결과 점수가 변경됐을 때만 갱신
+        if (lastResultScore != currentScore)
+        {
+            resultText.SetText("Score: {0}", currentScore);
+            lastResultScore = currentScore;
+        }
+
+        // 최고 점수가 변경됐을 때만 갱신
+        if (bestText != null && lastBestScore != best)
+        {
+            bestText.SetText("Best Score: {0}", best);
+            lastBestScore = best;
+        }
     }
 }

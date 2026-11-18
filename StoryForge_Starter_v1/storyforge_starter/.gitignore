@@ -1,5 +1,0 @@
-.env
-.venv/
-__pycache__/
-storyforge.sqlite3
-*.sqlite3-journal
